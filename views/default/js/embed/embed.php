@@ -33,7 +33,7 @@
 		elgg.ajax($elem.attr('href'), {
 			dataType: 'json',
 			data: {
-				container_guid: elgg.page_owner.guid
+				container_guid: elgg.get_page_owner_guid()
 			},
 			beforeSend: function() {
 				$.fancybox.showActivity();
@@ -76,7 +76,7 @@
 		$form.ajaxSubmit({
 			dataType: 'json',
 			data: {
-				container_guid: elgg.page_owner.guid
+				container_guid: elgg.get_page_owner_guid()
 			},
 			beforeSend: function() {
 				$.fancybox.showActivity();
@@ -113,7 +113,7 @@
 		$form.ajaxSubmit({
 			dataType: 'json',
 			data: {
-				container_guid: elgg.page_owner.guid
+				container_guid: elgg.get_page_owner_guid()
 			},
 			beforeSend: function() {
 				$.fancybox.showActivity();
@@ -160,7 +160,7 @@
 			dataType: 'json',
 			data: {
 				'X-Requested-With': 'XMLHttpRequest', // simulate XHR
-				container_guid: elgg.page_owner.guid
+				container_guid: elgg.get_page_owner_guid()
 			},
 			beforeSend: function() {
 				$form.find('[type="submit"]').addClass('elgg-state-disabled').text(elgg.echo('embed:process:uploading')).prop('disabled', true);

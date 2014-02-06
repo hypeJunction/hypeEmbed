@@ -9,6 +9,15 @@ namespace hypeJunction\Embed;
  */
 function embed_page_handler($page) {
 
+	$params = array(
+		'output' => '',
+		'status' => 0,
+		'system_messages' => array(
+			'error' => array(),
+			'success' => array()
+		)
+	);
+
 	$container_guid = get_input('container_guid');
 	if ($container_guid && get_entity($container_guid)) {
 		elgg_set_page_owner_guid($container_guid);
@@ -43,7 +52,7 @@ function embed_page_handler($page) {
 				$content = elgg_autop(elgg_echo('embed:section:invalid'));
 			}
 
-			echo elgg_view_layout('one_column', array(
+			$params['output'] = elgg_view_layout('one_column', array(
 				'title' => $title,
 				'content' => $filter . $content,
 				'class' => 'embed-wrapper'
@@ -51,8 +60,15 @@ function embed_page_handler($page) {
 			break;
 	}
 
+	$system_messages = system_messages(NULL, "");
+	if (isset($system_messages['success'])) {
+		$params['system_messages']['success'] = $system_messages['success'];
+	}
+	if (isset($system_messages['error'])) {
+		$params['system_messages']['error'] = $system_messages['error'];
+		$params['status'] = -1;
+	}
 
-
-	// XHR hook will transfer the output to json
-	forward();
+	echo json_encode($params);
+	exit;
 }

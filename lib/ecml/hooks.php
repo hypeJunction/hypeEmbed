@@ -144,19 +144,24 @@ function render_embed($hook, $type, $content, $params) {
 		$entity = get_entity($guid);
 		$attributes['entity'] = $entity;
 
-		if (!elgg_instanceof($entity)) {
-			$content = elgg_view('embed/ecml/error');
-		} else {
+		if (elgg_instanceof($entity)) {
 			$type = $entity->getType();
 			$subtype = $entity->getSubtype();
 
 			if (elgg_view_exists("embed/ecml/$type/$subtype")) {
-				$content = elgg_view("embed/ecml/$type/$subtype", $attributes);
-			} else if (elgg_view_exists("embed/ecml/$type")) {
-				$content = elgg_view("embed/ecml/$type", $attributes);
-			} else {
-				$content = elgg_view("embed/ecml/default", $attributes);
+				$ecml = elgg_view("embed/ecml/$type/$subtype", $attributes);
+			} else if ($type == 'object' && in_array($subtype, get_registered_entity_types('object'))) {
+				if (elgg_view_exists("embed/ecml/object")) {
+					$ecml = elgg_view("embed/ecml/object", $attributes);
+				} else {
+					$ecml = elgg_view("embed/ecml/default", $attributes);
+				}
 			}
+		}
+		if (empty($ecml)) {
+			$content = elgg_view('embed/ecml/error');
+		} else {
+			$content = $ecml;
 		}
 	} elseif (isset($attributes['src'])) {
 		$content = elgg_view("embed/ecml/url", $attributes);

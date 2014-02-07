@@ -78,6 +78,7 @@
 		$form.ajaxSubmit({
 			dataType: 'json',
 			data: {
+				'X-Requested-With': 'XMLHttpRequest', // simulate XHR
 				container_guid: elgg.get_page_owner_guid()
 			},
 			beforeSend: function() {
@@ -115,6 +116,7 @@
 		$form.ajaxSubmit({
 			dataType: 'json',
 			data: {
+				'X-Requested-With': 'XMLHttpRequest', // simulate XHR
 				container_guid: elgg.get_page_owner_guid()
 			},
 			beforeSend: function() {

@@ -28,12 +28,6 @@ function embed_page_handler($page) {
 		default :
 		case 'tab' :
 
-			// We do not want to serve this page via non-xhr requests
-			if (!elgg_is_xhr()) {
-				register_error(elgg_echo('embed:error:non_xhr_request'));
-				forward(REFERER);
-			}
-
 			$default_tab = (elgg_is_active_plugin('file')) ? 'file' : 'content_items';
 			$embed_tab = elgg_extract(1, $page, $default_tab);
 
@@ -69,6 +63,11 @@ function embed_page_handler($page) {
 		$params['status'] = -1;
 	}
 
+	// We do not want to serve this page via non-xhr requests
+	if (!elgg_is_xhr()) {
+		register_error(elgg_echo('embed:error:non_xhr_request'));
+		return false;
+	}
 	echo json_encode($params);
 	exit;
 }

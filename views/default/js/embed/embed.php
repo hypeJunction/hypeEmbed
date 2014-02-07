@@ -5,6 +5,10 @@
 
 	elgg.embed.init = function() {
 
+		$('body.embed-state-loading').live('click', function() {
+			$(this).removeClass('embed-state-loading');
+		});
+
 		$('.embed-control, .embed-wrapper .elgg-pagination a, .embed-section').live('click', elgg.embed.loader);
 		$('.embed-wrapper .elgg-form-embed-search').live('submit', elgg.embed.search);
 		$('.embed-wrapper .elgg-form-embed-upload').live('submit', elgg.embed.upload);
@@ -36,16 +40,14 @@
 				container_guid: elgg.get_page_owner_guid()
 			},
 			beforeSend: function() {
-				$.fancybox.showActivity();
+				$('body').addClass('embed-state-loading');
 			},
 			success: function(data) {
 				if (data.status >= 0) {
 					if ($wrapper.length) {
 						$wrapper.replaceWith(data.output);
 					} else {
-						$.fancybox({
-							content: data.output,
-						});
+						elgg.embed.lightboxOpen(data.output);
 					}
 				}
 				if (data.system_messages) {
@@ -57,7 +59,7 @@
 				elgg.register_error(elgg.echo('embed:error:ajax'));
 			},
 			complete: function() {
-				$.fancybox.hideActivity();
+				$('body').removeClass('embed-state-loading');
 			}
 		});
 	}
@@ -79,7 +81,7 @@
 				container_guid: elgg.get_page_owner_guid()
 			},
 			beforeSend: function() {
-				$.fancybox.showActivity();
+				$('body').addClass('embed-state-loading');
 			},
 			success: function(data) {
 				if (data.status >= 0) {
@@ -94,7 +96,7 @@
 				elgg.register_error(elgg.echo('embed:error:search'));
 			},
 			complete: function() {
-				$.fancybox.hideActivity();
+				$('body').removeClass('embed-state-loading');
 			}
 		});
 	}
@@ -116,7 +118,7 @@
 				container_guid: elgg.get_page_owner_guid()
 			},
 			beforeSend: function() {
-				$.fancybox.showActivity();
+				$('body').addClass('embed-state-loading');
 			},
 			success: function(data) {
 				if (data.status >= 0) {
@@ -128,7 +130,7 @@
 						content: data.output
 					}, false);
 
-					$.fancybox.close();
+					elgg.embed.lightboxClose();
 				}
 				if (data.system_messages) {
 					elgg.register_error(data.system_messages.error);
@@ -139,7 +141,7 @@
 				elgg.register_error(elgg.echo('embed:error:ajax'));
 			},
 			complete: function() {
-				$.fancybox.hideActivity();
+				$('body').removeClass('embed-state-loading');
 			}
 		});
 	}
@@ -164,7 +166,7 @@
 			},
 			beforeSend: function() {
 				$form.find('[type="submit"]').addClass('elgg-state-disabled').text(elgg.echo('embed:process:uploading')).prop('disabled', true);
-				$.fancybox.showActivity();
+				$('body').addClass('embed-state-loading');
 			},
 			success: function(data) {
 				if (data.status >= 0) {
@@ -180,7 +182,7 @@
 				$form.find('[type="submit"]').removeClass('elgg-state-disabled').text(elgg.echo('upload')).prop('disabled', false);
 			},
 			complete: function() {
-				$.fancybox.hideActivity();
+				$('body').removeClass('embed-state-loading');
 			}
 		});
 	};
@@ -196,7 +198,7 @@
 
 		elgg.ajax($elem.attr('href'), {
 			beforeSend: function() {
-				$.fancybox.showActivity();
+				$('body').addClass('embed-state-loading');
 			},
 			success: function(data) {
 				$textArea.val($textArea.val() + data);
@@ -207,13 +209,13 @@
 					content: data
 				}, false);
 
-				$.fancybox.close();
+				elgg.embed.lightboxClose();
 			},
 			error: function() {
 				elgg.register_error(elgg.echo('embed:error:ajax'));
 			},
 			complete: function() {
-				$.fancybox.hideActivity();
+				$('body').removeClass('embed-state-loading');
 			}
 		});
 	};
@@ -235,6 +237,30 @@
 			}
 		}
 	}
+
+	elgg.embed.lightboxOpen = function(content) {
+		if (typeof $.fancybox !== 'undefined' && !$.fancybox.__noSuchMethod__) {
+			$.fancybox({
+				content: content
+			});
+		} else if (typeof $.colorbox !== 'undefined') {
+			var params = {};
+			if (typeof elgg.ui.lightbox !== 'undefined' && typeof elgg.ui.lightbox.getSettings !== 'undefined') {
+				params = elgg.ui.lightbox.getSettings();
+			}
+			params.html = content;
+			$.colorbox(params);
+		}
+	}
+
+	elgg.embed.lightboxClose = function(content) {
+		if (typeof $.fancybox !== 'undefined'  && !$.fancybox.__noSuchMethod__) {
+			$.fancybox.close();
+		} else if (typeof $.colorbox !== 'undefined') {
+			$.colorbox.close();
+		}
+	}
+
 
 	elgg.register_hook_handler('init', 'system', elgg.embed.init);
 	elgg.register_hook_handler('insert', 'embed', elgg.embed.insertTinyMce);

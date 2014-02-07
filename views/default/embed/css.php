@@ -1,5 +1,19 @@
 <?php if (FALSE) : ?><style type="text/css"><?php endif; ?>
 
+	/* ***************************************
+		TOP LEVEL ELEMENTS
+	*************************************** */
+
+	body.embed-state-loading:before {
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		z-index: 10000;
+		background: rgba(255, 255, 255, 0.5) url('<?php echo elgg_get_site_url() . '_graphics/ajax_loader_bw.gif' ?>') no-repeat 50% 50%;
+		content: " ";
+	}
+
 	.embed-wrapper {
 		width: 730px;
 		min-height: 400px;

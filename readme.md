@@ -1,8 +1,9 @@
 hypeEmbed
 =========
 
-Improved and extended embedding for Elgg
+Improved and extended embedding for Elgg 1.8 & 1.9
 
+[Buy me a burger to go with my beer!](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=P7QA9CFMENBKA)
 
 ## Features
 

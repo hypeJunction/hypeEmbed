@@ -13,27 +13,26 @@ $title = elgg_view('output/url', array(
 	'href' => ($meta->canonical) ? $meta->canonical : $meta->url,
 	'target' => '_blank'
 		));
-$description = elgg_view('output/description', array(
+
+$description = elgg_view('output/longtext', array(
 	'value' => $meta->description
 		));
-$author = (isset($meta->author)) ?
-		elgg_echo('byline', array(elgg_view('output/url', array(
-				'text' => $meta->author,
-				'href' => $meta->author_url,
-				'target' => '_blank'))
-		)) :
-		'';
+
+$description .= elgg_view('output/url', array(
+	'href' => ($meta->canonical) ? $meta->canonical : $meta->url,
+	'class' => 'embed-ecml-resource',
+	'target' => '_blank',
+		));
 
 $body = elgg_view('object/elements/summary', array(
 	'title' => $title,
-	'subtitle' => $author,
 	'tags' => false,
-	'content' => $meta->description
+	'content' => $description
 		));
 
 $content = elgg_view_image_block($icon, $body);
 ?>
 
 <div class="embed-ecml-oembed-link">
-<?php echo $content; ?>
+	<?php echo $content; ?>
 </div>

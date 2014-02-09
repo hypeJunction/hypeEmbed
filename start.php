@@ -45,4 +45,8 @@ function init() {
 		elgg_register_plugin_hook_handler('prepare:src', 'embed', __NAMESPACE__ . '\\ECML\\prepare_src_embed');
 		elgg_register_plugin_hook_handler('output:src', 'embed', __NAMESPACE__ . '\\ECML\\render_oembed_html');
 	}
+
+	// Making things pretty
+	elgg_extend_view('page/elements/head', 'framework/fonts/font-awesome');
+	elgg_extend_view('page/elements/head', 'framework/fonts/open-sans');
 }

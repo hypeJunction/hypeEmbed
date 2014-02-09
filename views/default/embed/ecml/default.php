@@ -19,6 +19,12 @@ if (!$view) {
 	echo elgg_view('embed/ecml/error');
 	return;
 }
+
+$view .= elgg_view('output/url', array(
+	'href' => $entity->getURL(),
+	'class' => 'embed-ecml-resource'
+		));
+
 ?>
 
 <div class="embed-ecml-placeholder">

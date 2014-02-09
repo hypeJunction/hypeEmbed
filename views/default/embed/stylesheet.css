@@ -1,0 +1,142 @@
+body.embed-state-loading:before {
+  display: block;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: -25px auto 0;
+  z-index: 10000;
+  content: "\f110";
+  color: #0054a7;
+  font-size: 50px;
+  line-height: 50px;
+  -webkit-animation: spin 2s infinite linear;
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.embed-wrapper {
+  width: 730px;
+  min-height: 400px;
+  margin: 20px 15px;
+}
+.embed-wrapper h2 {
+  color: #333333;
+  margin-bottom: 10px;
+}
+.embed-wrapper .elgg-item {
+  cursor: pointer;
+}
+.embed-wrapper p {
+  color: #333;
+}
+.embed-wrapper .embed-item {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.embed-wrapper .embed-item:hover {
+  background-color: #eee;
+}
+
+/* ***************************************
+	EMBED FORMS
+*************************************** */
+.elgg-form-embed-search {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.elgg-form-embed-search fieldset > div {
+  display: inline-block;
+  margin: 0;
+}
+
+.elgg-form-embed-search label {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.elgg-form-embed-search input {
+  width: auto;
+}
+
+.ebmed-wrapper fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.embed-wrapper .elgg-image-block {
+  width: auto;
+}
+
+/* ***************************************
+	EMBED ECML
+*************************************** */
+.embed-ecml-placeholder {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  font-family: 'Open Sans', sans-serif;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 10px 10px 30px;
+  margin: 10px;
+  border: 1px solid #cccccc;
+}
+.embed-ecml-placeholder:after {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f0c1";
+  background: #cccccc;
+  color: white;
+  font-size: 16px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: 5px;
+}
+.embed-ecml-placeholder iframe, .embed-ecml-placeholder object, .embed-ecml-placeholder embed {
+  max-width: 100%;
+}
+.embed-ecml-placeholder .elgg-image-block .elgg-image {
+  margin-right: 10px;
+}
+.embed-ecml-placeholder .embed-ecml-resource {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 0 10px;
+  width: 100%;
+  height: auto;
+  line-height: 25px;
+  white-space: nowrap;
+  color: white;
+  background: #cccccc;
+  font-size: 90%;
+}
+
+.embed-ecml-error {
+  border-color: darkred;
+}
+
+.embed-ecml-error h3 {
+  color: darkred;
+}

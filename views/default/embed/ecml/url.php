@@ -13,6 +13,12 @@ $default = elgg_view('output/url', array(
 $content = elgg_trigger_plugin_hook('output:src', 'embed', array(
 	'url' => $url,
 		), $default);
+
+$content .= elgg_view('output/url', array(
+	'href' => $url,
+	'class' => 'embed-ecml-resource',
+	'target' => '_blank',
+		));
 ?>
 
 <div class="embed-ecml-placeholder">

@@ -12,6 +12,12 @@ $content = elgg_view('output/url', array(
 	'href' => $meta->canonical,
 	'target' => '_blank',
 		));
+
+$content .= elgg_view('output/url', array(
+	'href' => ($meta->canonical) ? $meta->canonical : $meta->url,
+	'class' => 'embed-ecml-resource',
+	'target' => '_blank',
+		));
 ?>
 
 <div class="embed-ecml-oembed-photo">

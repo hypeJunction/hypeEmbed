@@ -85,9 +85,6 @@ body.embed-state-loading:before {
 	EMBED ECML
 *************************************** */
 .embed-ecml-placeholder {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
   position: relative;
   font-family: 'Open Sans', sans-serif;
   max-width: 100%;
@@ -95,6 +92,11 @@ body.embed-state-loading:before {
   padding: 10px 10px 30px;
   margin: 10px;
   border: 1px solid #cccccc;
+}
+.embed-ecml-placeholder * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .embed-ecml-placeholder:after {
   display: inline-block;

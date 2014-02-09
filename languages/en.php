@@ -34,7 +34,8 @@ $english = array(
 	'embed:embed_src:error:empty_url' => 'Embed source URL can not be empty',
 	'embed:embed_src:error:empty_title' => 'Embed title can not be empty',
 	'embed:embed_src:error:invalid_url' => 'The URL is malformatted or does not exist',
-	
+
+	'embed:iframely' => 'Iframely',
 	'embed:iframely_gateway' => 'Iframely Gateway URL',
 	'embed:iframely_gateway:help' => 'Provide the URL of the Iframely Gateway that you would like to use. Leave empty to use iframely.com servers',
 	

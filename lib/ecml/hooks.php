@@ -5,6 +5,11 @@ namespace hypeJunction\Embed\ECML;
 use hypeJunction\Embed;
 use ElggFile;
 
+if (!defined('IFRAMELY_GATEWAY')) {
+	$iframely_gateway = elgg_get_plugin_setting('iframely_gateway', PLUGIN_ID);
+	define('IFRAMELY_GATEWAY', ($iframely_gateway) ? $iframely_gateway : 'http://iframely.com/');
+}
+
 /**
  * Add views in which ECML should be rendered
  *

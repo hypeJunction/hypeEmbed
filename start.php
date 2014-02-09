@@ -13,9 +13,6 @@ namespace hypeJunction\Embed;
 
 const PLUGIN_ID = 'hypeEmbed';
 
-$iframely_gateway = elgg_get_plugin_setting('iframely_gateway', PLUGIN_ID);
-define('IFRAMELY_GATEWAY', ($iframely_gateway) ? $iframely_gateway : 'http://iframely.com/');
-
 require_once __DIR__ . '/lib/functions.php';
 require_once __DIR__ . '/lib/hooks.php';
 require_once __DIR__ . '/lib/page_handlers.php';
@@ -40,7 +37,7 @@ function init() {
 	elgg_register_ajax_view('embed/item/entity');
 
 	elgg_register_action('embed/embed_src', __DIR__ . '/actions/embed/embed_src.php');
-	
+
 	if (elgg_is_active_plugin('ecml')) {
 		elgg_register_plugin_hook_handler('render:embed', 'ecml', __NAMESPACE__ . '\\ECML\\render_embed');
 		elgg_register_plugin_hook_handler('get_views', 'ecml', __NAMESPACE__ . '\\ECML\\get_views');
@@ -49,5 +46,3 @@ function init() {
 		elgg_register_plugin_hook_handler('output:src', 'embed', __NAMESPACE__ . '\\ECML\\render_oembed_html');
 	}
 }
-
-

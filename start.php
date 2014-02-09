@@ -13,6 +13,7 @@ namespace hypeJunction\Embed;
 
 const PLUGIN_ID = 'hypeEmbed';
 
+$iframely_gateway = elgg_get_plugin_setting('iframely_gateway', PLUGIN_ID);
 define('IFRAMELY_GATEWAY', ($iframely_gateway) ? $iframely_gateway : 'http://iframely.com/');
 
 require_once __DIR__ . '/lib/functions.php';

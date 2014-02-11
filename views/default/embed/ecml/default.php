@@ -22,7 +22,8 @@ if (!$view) {
 
 $view .= elgg_view('output/url', array(
 	'href' => $entity->getURL(),
-	'class' => 'embed-ecml-resource'
+	'class' => 'embed-ecml-resource',
+	'target' => '_blank',
 		));
 
 ?>

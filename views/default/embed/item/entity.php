@@ -16,7 +16,7 @@ if (!elgg_instanceof($entity)) {
 
 if ($entity instanceof ElggFile) {
 	$size = ($entity->simpletype == 'image') ? 'large' : 'small';
-	$output = elgg_view_entity_icon($entity, 'master');
+	$output = elgg_view_entity_icon($entity, $size);
 } else {
 
 	$title = (isset($entity->name)) ? $entity->name : $entity->title;

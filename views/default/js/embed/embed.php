@@ -16,7 +16,7 @@
 		});
 		$('.embed-control, .embed-wrapper .elgg-pagination a, .embed-section').live('click', elgg.embed.loader);
 		$('.embed-wrapper .elgg-form-embed-search').live('submit', elgg.embed.search);
-		$('.embed-wrapper .elgg-form-embed-upload').live('submit', elgg.embed.upload);
+		$('.embed-wrapper form[enctype^="multipart"]').live('submit', elgg.embed.upload);
 		$('.embed-wrapper .elgg-form-embed-src').live('submit', elgg.embed.embedSrc);
 		$(".embed-insert").live('click', elgg.embed.insert);
 
@@ -159,7 +159,11 @@
 			},
 			success: function(data) {
 				if (data.status >= 0) {
-					$('.embed-section.embed-section-file').trigger('click');
+					var forward = $('.embed-wrapper [name="embed_forward"]').val();
+					if (!forward) {
+						forward = 'file';
+					}
+					$('.embed-section.embed-section-' + forward).trigger('click');
 				}
 				if (data.system_messages) {
 					elgg.register_error(data.system_messages.error);
@@ -232,6 +236,10 @@
 			position: {my: "center", at: "center", of: window}
 		})
 	};
+
+	elgg.embed.lightboxClose = function() {
+		$('#embed-modal').dialog('close');
+	}
 
 	elgg.register_hook_handler('init', 'system', elgg.embed.init);
 	elgg.register_hook_handler('insert', 'embed', elgg.embed.insertTinyMce);

@@ -40,6 +40,19 @@ function embed_page_handler($page) {
 			$view = "embed/tab/$embed_tab";
 			if (elgg_view_exists($view)) {
 				$content = elgg_view($view);
+			} else {
+				$embed_tab = elgg_get_config('embed_tab');
+				if ($embed_tab instanceof \ElggMenuItem) {
+					$view = $embed_tab->getData('view');
+					$options = $embed_tab->getData('options');
+					if ($view) {
+						$content = elgg_view($view);
+					} else if ($options) {
+						$content = elgg_view('embed/get_list', array(
+							'options' => $options
+						));
+					}
+				}
 			}
 
 			if (empty($content)) {

@@ -56,7 +56,7 @@ function embed_filter_menu_setup($hook, $type, $menu, $params) {
 					'href' => 'embed/tab/file',
 					'class' => 'embed-section embed-section-file',
 					'selected' => ($selected_tab == 'file'),
-					'priority' => 100,
+					'priority' => 1,
 		));
 
 		$menu[] = \ElggMenuItem::factory(array(

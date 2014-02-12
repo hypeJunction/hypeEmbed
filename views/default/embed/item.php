@@ -46,8 +46,9 @@ $body = elgg_view('object/elements/summary', array(
 		));
 
 $insert = elgg_view('output/url', array(
-	'class' => 'elgg-button elgg-button-action small embed-insert',
-	'text' => elgg_echo('embed:embed'),
+	'class' => 'elgg-button elgg-button-action embed-insert',
+	'text' => elgg_view_icon('embed'),
+	'title' => elgg_echo('embed:embed'),
 	'href' => 'ajax/view/embed/item/entity?guid=' . $entity->guid
 		));
 

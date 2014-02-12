@@ -26,9 +26,17 @@ body.embed-state-loading:before {
 }
 
 .embed-wrapper {
-  width: 730px;
+  width: auto;
   min-height: 400px;
-  margin: 20px 15px;
+  padding: 0;
+  margin: 0;
+}
+.embed-wrapper > .elgg-body {
+  width: auto;
+  margin: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .embed-wrapper h2 {
   color: #333333;
@@ -51,34 +59,44 @@ body.embed-state-loading:before {
 /* ***************************************
 	EMBED FORMS
 *************************************** */
-.elgg-form-embed-search {
-  padding: 10px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #e8e8e8;
+.embed-wrapper {
+  font-size: 14px;
 }
-
-.elgg-form-embed-search fieldset > div {
-  display: inline-block;
-  margin: 0;
-}
-
-.elgg-form-embed-search label {
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.elgg-form-embed-search input {
-  width: auto;
-}
-
-.ebmed-wrapper fieldset {
+.embed-wrapper fieldset {
   margin: 0;
   padding: 0;
   border: none;
+  *zoom: 1;
 }
-
-.embed-wrapper .elgg-image-block {
-  width: auto;
+.embed-wrapper fieldset:before, .embed-wrapper fieldset:after {
+  content: " ";
+  display: table;
+}
+.embed-wrapper fieldset:after {
+  clear: both;
+}
+.embed-wrapper fieldset.elgg-foot {
+  text-align: right;
+}
+.embed-wrapper .elgg-button-action, .embed-wrapper .elgg-button-submit {
+  font-size: 1em;
+  padding: .5em 1em;
+}
+.embed-wrapper .elgg-button-action .elgg-icon, .embed-wrapper .elgg-button-submit .elgg-icon {
+  font-size: 20px;
+  color: white;
+}
+.embed-wrapper .elgg-icon.elgg-icon-embed {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.embed-wrapper .elgg-icon.elgg-icon-embed:after {
+  content: "\f121";
 }
 
 /* ***************************************
@@ -141,4 +159,95 @@ body.embed-state-loading:before {
 
 .embed-ecml-error h3 {
   color: darkred;
+}
+
+/********************************
+	EMBED JQUERY UI MODAL
+********************************/
+.embed-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  outline: 0;
+  border: 1px solid #cccccc;
+  background: #FFF;
+  padding: 0;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.embed-modal .ui-dialog-titlebar {
+  margin: 0;
+  padding: 10px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}
+.embed-modal .ui-dialog-titlebar .ui-dialog-title {
+  margin: 0;
+}
+.embed-modal .ui-dialog-titlebar-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  height: 35px;
+  width: 40px;
+  display: block;
+}
+.embed-modal .ui-dialog-titlebar-close .ui-icon-closethick {
+  text-indent: 0;
+  position: relative;
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: none;
+  border: 0;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 40px;
+  height: 35px;
+  border-left: 1px solid #cccccc;
+}
+.embed-modal .ui-dialog-titlebar-close .ui-icon-closethick:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  content: "\f00d";
+  text-align: center;
+  font-size: 16px;
+  line-height: 35px;
+  color: #b8b8b8;
+  padding: 0 12px;
+}
+
+.ui-widget-overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  background: rgba(0, 0, 0, 0.45);
+  top: 0;
 }

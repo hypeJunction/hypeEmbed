@@ -5,12 +5,14 @@ namespace hypeJunction\Embed;
 $query = elgg_extract('query', $vars);
 $simpletype = elgg_extract('simpletype', $vars);
 
-$body .= '<div class="pam">';
+$body .= '<div class="elgg-col elgg-col-1of2">';
+$body .= '<div class="elgg-inner">';
 $body .= '<label>' . elgg_echo('embed:tab:file:search:query') . '</label>';
 $body .= elgg_view('input/text', array(
 	'value' => $query,
 	'name' => 'query'
 		));
+$body .= '</div>';
 $body .= '</div>';
 
 elgg_register_tag_metadata_name('simpletype');
@@ -27,7 +29,8 @@ foreach ($types as $type) {
 	$type_options[$type->tag] = elgg_echo("file:type:$type->tag");
 }
 
-$body .= '<div class="pam">';
+$body .= '<div class="elgg-col elgg-col-1of2">';
+$body .= '<div class="elgg-inner">';
 $body .= '<label>' . elgg_echo('embed:tab:file:search:type') . '</label>';
 $body .= elgg_view('input/dropdown', array(
 	'value' => $simpletype,
@@ -35,17 +38,15 @@ $body .= elgg_view('input/dropdown', array(
 	'options_values' => $type_options
 		));
 $body .= '</div>';
+$body .= '</div>';
 
 $body = '<fieldset>' . $body . '</fieldset>';
 
-
-$button .= elgg_view('input/submit', array(
+$body .= '<fieldset class="elgg-foot">';
+$body .= elgg_view('input/submit', array(
 	'value' => elgg_echo('search'),
-	'class' => 'elgg-button elgg-button-submit mam'
+	'class' => 'elgg-button-submit'
 		));
-
-$body = elgg_view_image_block('', $body, array(
-	'image_alt' => $button
-		));
+$body .= '</fieldset>';
 
 echo $body;

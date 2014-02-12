@@ -1,39 +1,38 @@
 //<script>
 	elgg.provide('elgg.embed');
-
 	elgg.embed.textAreaId = null;
-
 	elgg.embed.init = function() {
+
+		$(window).resize(function(e) {
+			if ($('#embed-modal').length) {
+				$('#embed-modal').dialog({
+					position: {my: "center", at: "center", of: window}
+				});
+			}
+		});
 
 		$('body.embed-state-loading').live('click', function() {
 			$(this).removeClass('embed-state-loading');
 		});
-
 		$('.embed-control, .embed-wrapper .elgg-pagination a, .embed-section').live('click', elgg.embed.loader);
 		$('.embed-wrapper .elgg-form-embed-search').live('submit', elgg.embed.search);
 		$('.embed-wrapper .elgg-form-embed-upload').live('submit', elgg.embed.upload);
 		$('.embed-wrapper .elgg-form-embed-src').live('submit', elgg.embed.embedSrc);
-
-
 		$(".embed-insert").live('click', elgg.embed.insert);
 
 	};
-
 	/**
-	 * Loads embed content into a lightbox
+	 * Loads embed content into a modal
 	 */
 	elgg.embed.loader = function(event) {
 
 		event.preventDefault();
-
 		var $elem = $(this);
-
 		if ($elem.is('.embed-control')) {
 			elgg.embed.textAreaId = $(this).data('textareaId');
 		}
 
 		var $wrapper = $('.embed-wrapper');
-
 		elgg.ajax($elem.attr('href'), {
 			dataType: 'json',
 			data: {
@@ -70,11 +69,8 @@
 	elgg.embed.search = function(event) {
 
 		event.preventDefault();
-
 		var $form = $(this);
-
 		var $wrapper = $form.closest('.embed-wrapper');
-
 		$form.ajaxSubmit({
 			dataType: 'json',
 			data: {
@@ -105,14 +101,10 @@
 	elgg.embed.embedSrc = function(event) {
 
 		event.preventDefault();
-
 		var $form = $(this);
-
 		var $wrapper = $form.closest('.embed-wrapper');
-
 		var textAreaId = elgg.embed.textAreaId;
 		var $textArea = $('#' + textAreaId);
-
 		$form.ajaxSubmit({
 			dataType: 'json',
 			data: {
@@ -126,12 +118,10 @@
 				if (data.status >= 0) {
 					$textArea.val($textArea.val() + data);
 					$textArea.focus();
-
 					var insert = elgg.trigger_hook('insert', 'embed', {
 						target_id: textAreaId,
 						content: data.output
 					}, false);
-
 					elgg.embed.lightboxClose();
 				}
 				if (data.system_messages) {
@@ -155,11 +145,8 @@
 
 		event.preventDefault();
 		event.stopPropagation();
-
 		var $form = $(this);
-
 		var $wrapper = $form.closest('.embed-wrapper');
-
 		$form.ajaxSubmit({
 			dataType: 'json',
 			data: {
@@ -188,16 +175,12 @@
 			}
 		});
 	};
-
 	elgg.embed.insert = function(event) {
 
 		event.preventDefault();
-
 		var $elem = $(this);
-
 		var textAreaId = elgg.embed.textAreaId;
 		var $textArea = $('#' + textAreaId);
-
 		elgg.ajax($elem.attr('href'), {
 			beforeSend: function() {
 				$('body').addClass('embed-state-loading');
@@ -205,12 +188,10 @@
 			success: function(data) {
 				$textArea.val($textArea.val() + data);
 				$textArea.focus();
-
 				var insert = elgg.trigger_hook('insert', 'embed', {
 					target_id: textAreaId,
 					content: data
 				}, false);
-
 				elgg.embed.lightboxClose();
 			},
 			error: function() {
@@ -221,12 +202,10 @@
 			}
 		});
 	};
-
 	elgg.embed.insertTinyMce = function(hook, type, params) {
 		console.log(params);
 		if (window.tinyMCE) {
 			var editor = window.tinyMCE.get(params.target_id);
-
 			if (editor) {
 
 				// work around for IE/TinyMCE bug where TinyMCE loses insert carot
@@ -241,28 +220,18 @@
 	}
 
 	elgg.embed.lightboxOpen = function(content) {
-		if (typeof $.fancybox !== 'undefined' && !$.fancybox.__noSuchMethod__) {
-			$.fancybox({
-				content: content
-			});
-		} else if (typeof $.colorbox !== 'undefined') {
-			var params = {};
-			if (typeof elgg.ui.lightbox !== 'undefined' && typeof elgg.ui.lightbox.getSettings !== 'undefined') {
-				params = elgg.ui.lightbox.getSettings();
-			}
-			params.html = content;
-			$.colorbox(params);
-		}
-	}
 
-	elgg.embed.lightboxClose = function(content) {
-		if (typeof $.fancybox !== 'undefined'  && !$.fancybox.__noSuchMethod__) {
-			$.fancybox.close();
-		} else if (typeof $.colorbox !== 'undefined') {
-			$.colorbox.close();
-		}
-	}
-
+		$('<div id="embed-modal" />').html(content).dialog({
+			title: null,
+			dialogClass: 'embed-modal',
+			width: 'auto',
+			modal: true,
+			close: function() {
+				$(this).dialog('destroy').remove();
+			},
+			position: {my: "center", at: "center", of: window}
+		})
+	};
 
 	elgg.register_hook_handler('init', 'system', elgg.embed.init);
 	elgg.register_hook_handler('insert', 'embed', elgg.embed.insertTinyMce);

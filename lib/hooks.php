@@ -29,8 +29,6 @@ function longtext_menu_setup($hook, $type, $menu, $params) {
 				'priority' => 10,
 	));
 
-	elgg_load_js('lightbox');
-	elgg_load_css('lightbox');
 	elgg_load_js('elgg.embed');
 	elgg_load_js('oembed.js');
 

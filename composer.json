@@ -1,0 +1,30 @@
+{
+	"name": "hypejunction/hypeembed",
+	"type": "elgg-plugin",
+	"repository": "hypeJunction/hypeEmbed",
+	"description": "Alternative full-featured embed",
+	"homepage": "http://hypejunction.com",
+	"minimum-stability": "stable",
+	"keywords": [
+		"elgg", "plugin", "embed", "link", "images"
+	],
+	"license": "GPL-2.0",
+	"authors": [
+		{
+			"name": "Ismayil Khayredinov",
+			"email": "ismayil.khayredinov@gmail.com"
+		}
+	],
+	"extra": {
+		"installer-name": "hypeEmbed"
+	},
+	"config": {
+		"vendor-dir": "vendors",
+		"preferred-install": "dist"
+	},
+	"require": {
+		"php": ">=5.3.3",
+		"composer/installers": ">=1.0.8"
+	}
+}
+

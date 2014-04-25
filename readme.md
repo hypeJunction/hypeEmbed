@@ -72,7 +72,7 @@ echo elgg_view('output/embed', array(
 hypeEmbed can be included in your Elgg project by require from the project's
 root composer.json.
 
-Support for composer in Elgg is an experimental feature pioneered by @Srokap.
+Support for composer in Elgg is an experimental feature pioneered by [@Srokap](https://github.com/Srokap/ "Paweł Sroka").
 
 Provisional config to include hypeEmbed into your project:
 ```json
@@ -82,6 +82,7 @@ Provisional config to include hypeEmbed into your project:
 		"hypejunction/hypemebed" : "@stable"
 	}
 }
+```
 
 ## Screenshots ##
 

@@ -42,7 +42,7 @@
 				$('body').addClass('embed-state-loading');
 			},
 			success: function(data) {
-				if (data.status >= 0) {
+				if (!data.system_messages.error.length) {
 					if ($wrapper.length) {
 						$wrapper.replaceWith(data.output);
 					} else {
@@ -231,7 +231,7 @@
 		$('<div id="embed-modal" />').html(content).dialog({
 			title: null,
 			dialogClass: 'embed-modal',
-			width: 'auto',
+			width: 600,
 			modal: true,
 			close: function() {
 				$(this).dialog('destroy').remove();

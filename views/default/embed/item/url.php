@@ -11,8 +11,6 @@ unset($vars['url']);
 
 // If the URL qualifies an existing entity, just use the entity view
 $guid = get_guid_from_url($url);
-echo $guid;
-
 if ($guid && ($entity = get_entity($guid))) {
 	echo elgg_view('embed/item/entity', array(
 		'entity' => $entity

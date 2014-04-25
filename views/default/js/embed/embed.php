@@ -116,7 +116,7 @@
 			},
 			success: function(data) {
 				if (data.status >= 0) {
-					$textArea.val($textArea.val() + data);
+					$textArea.val($textArea.val() + data.output);
 					$textArea.focus();
 					var insert = elgg.trigger_hook('insert', 'embed', {
 						target_id: textAreaId,
@@ -190,6 +190,9 @@
 				$('body').addClass('embed-state-loading');
 			},
 			success: function(data) {
+				if (typeof data !== 'string' && data.output) {
+					data = data.output;
+				}
 				$textArea.val($textArea.val() + data);
 				$textArea.focus();
 				var insert = elgg.trigger_hook('insert', 'embed', {
@@ -207,7 +210,7 @@
 		});
 	};
 	elgg.embed.insertTinyMce = function(hook, type, params) {
-		console.log(params);
+
 		if (window.tinyMCE) {
 			var editor = window.tinyMCE.get(params.target_id);
 			if (editor) {

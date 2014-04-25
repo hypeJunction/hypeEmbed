@@ -164,7 +164,7 @@ body.embed-state-loading:before {
 /********************************
 	EMBED JQUERY UI MODAL
 ********************************/
-.embed-modal {
+.ui-dialog.embed-modal {
   position: absolute;
   top: 0;
   left: 0;
@@ -184,8 +184,10 @@ body.embed-state-loading:before {
   -o-border-radius: 5px;
   border-radius: 5px;
   font-size: 14px;
+  width: 600px;
+  max-width: 95%;
 }
-.embed-modal .ui-dialog-titlebar {
+.ui-dialog.embed-modal .ui-dialog-titlebar {
   margin: 0;
   padding: 10px;
   background: none;
@@ -197,10 +199,10 @@ body.embed-state-loading:before {
   -o-border-radius: 0;
   border-radius: 0;
 }
-.embed-modal .ui-dialog-titlebar .ui-dialog-title {
+.ui-dialog.embed-modal .ui-dialog-titlebar .ui-dialog-title {
   margin: 0;
 }
-.embed-modal .ui-dialog-titlebar-close {
+.ui-dialog.embed-modal .ui-dialog-titlebar-close {
   position: absolute;
   right: 0;
   top: 0;
@@ -212,8 +214,9 @@ body.embed-state-loading:before {
   width: 40px;
   display: block;
 }
-.embed-modal .ui-dialog-titlebar-close .ui-icon-closethick {
+.ui-dialog.embed-modal .ui-dialog-titlebar-close .ui-icon-closethick {
   text-indent: 0;
+  color: transparent;
   position: relative;
   display: inline-block;
   font-family: FontAwesome;
@@ -231,7 +234,7 @@ body.embed-state-loading:before {
   height: 35px;
   border-left: 1px solid #cccccc;
 }
-.embed-modal .ui-dialog-titlebar-close .ui-icon-closethick:after {
+.ui-dialog.embed-modal .ui-dialog-titlebar-close .ui-icon-closethick:after {
   position: absolute;
   top: 0;
   right: 0;

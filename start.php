@@ -32,7 +32,7 @@ function init() {
 	elgg_register_js('elgg.embed', elgg_get_simplecache_url('js', 'embed/embed'), 'footer');
 
 	elgg_register_plugin_hook_handler('register', 'menu:longtext', __NAMESPACE__ . '\\longtext_menu_setup');
-	elgg_register_plugin_hook_handler('register', 'menu:embed', __NAMESPACE__ . '\\embed_filter_menu_setup');
+	elgg_register_plugin_hook_handler('register', 'menu:embed', __NAMESPACE__ . '\\embed_filter_menu_setup', 1000);
 
 	elgg_register_ajax_view('embed/item/entity');
 

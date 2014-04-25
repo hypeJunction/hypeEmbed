@@ -46,7 +46,7 @@ function longtext_menu_setup($hook, $type, $menu, $params) {
  */
 function embed_filter_menu_setup($hook, $type, $menu, $params) {
 
-	$selected_tab = elgg_get_config('embed_tab');
+	$selected_tab = elgg_get_config('embed_tab_context');
 
 	if (elgg_is_active_plugin('file')) {
 
@@ -55,7 +55,6 @@ function embed_filter_menu_setup($hook, $type, $menu, $params) {
 					'text' => elgg_echo('embed:file'),
 					'href' => 'embed/tab/file',
 					'class' => 'embed-section embed-section-file',
-					'selected' => ($selected_tab == 'file'),
 					'priority' => 1,
 		));
 
@@ -64,7 +63,6 @@ function embed_filter_menu_setup($hook, $type, $menu, $params) {
 					'text' => elgg_echo('embed:file:upload'),
 					'href' => 'embed/tab/file_upload',
 					'class' => 'embed-section embed-section-file-upload',
-					'selected' => ($selected_tab == 'file_upload'),
 					'priority' => 200,
 		));
 	}
@@ -74,7 +72,6 @@ function embed_filter_menu_setup($hook, $type, $menu, $params) {
 				'text' => elgg_echo('embed:content_items'),
 				'href' => 'embed/tab/content_items',
 				'class' => 'embed-section embed-section-content-items',
-				'selected' => ($selected_tab == 'content_items'),
 				'priority' => 300,
 	));
 
@@ -83,9 +80,19 @@ function embed_filter_menu_setup($hook, $type, $menu, $params) {
 				'text' => elgg_echo('embed:embed_src'),
 				'href' => 'embed/tab/embed_src',
 				'class' => 'embed-section embed-section-embed-src',
-				'selected' => ($selected_tab == 'embed_src'),
 				'priority' => 400,
 	));
+
+	foreach ($menu as $key => $item) {
+		if ($item instanceof \ElggMenuItem) {
+			if ($item->getName() == $selected_tab) {
+				elgg_set_config('embed_tab', $item);
+				$item->setSelected(true);
+			}
+		} else {
+			unset($menu[$key]);
+		}
+	}
 
 	return $menu;
 }

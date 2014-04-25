@@ -1,3 +1,13 @@
+<?php
+
+namespace hypeJunciton\Embed;
+
+global $HYPEJUNCTION_FONTS;
+if (isset($HYPEJUNCTION_FONTS['font-awesome'])) {
+	return;
+}
+$HYPEJUNCTION_FONTS['font-awesome'] = true;
+?>
 <style type="text/css">
 	@font-face {
 		font-family: 'FontAwesome';

@@ -1,10 +1,10 @@
 @import "compass/css3"; // compass css3 helpers
 
-@import "font-awesome/variables";
-@import "font-awesome/mixins";
-
 @import "variables";
 @import "mixins";
+
+@import "font-awesome/variables";
+@import "font-awesome/mixins";
 
 body {
 	@include loader(embed-state-loading);

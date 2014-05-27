@@ -13,6 +13,8 @@ namespace hypeJunction\Embed;
 
 const PLUGIN_ID = 'hypeEmbed';
 
+require_once __DIR__ . '/vendors/autoload.php';
+
 require_once __DIR__ . '/lib/functions.php';
 require_once __DIR__ . '/lib/hooks.php';
 require_once __DIR__ . '/lib/page_handlers.php';

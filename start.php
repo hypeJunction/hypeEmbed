@@ -26,6 +26,12 @@ function init() {
 	elgg_extend_view('css/elgg', 'embed/css');
 	elgg_extend_view('css/admin', 'embed/css');
 
+	// Load fonts
+	elgg_register_css('fonts.font-awesome', '/mod/' . PLUGIN_ID . '/vendors/fonts/font-awesome.css');
+	elgg_load_css('fonts.font-awesome');
+	elgg_register_css('fonts.open-sans', '/mod/' . PLUGIN_ID . '/vendors/fonts/open-sans.css');
+	elgg_load_css('fonts.open-sans');
+
 	elgg_register_page_handler('embed', __NAMESPACE__ . '\\embed_page_handler');
 
 	elgg_register_simplecache_view('js/embed/embed');
@@ -45,8 +51,4 @@ function init() {
 		elgg_register_plugin_hook_handler('prepare:src', 'embed', __NAMESPACE__ . '\\ECML\\prepare_src_embed');
 		elgg_register_plugin_hook_handler('output:src', 'embed', __NAMESPACE__ . '\\ECML\\render_oembed_html');
 	}
-
-	// Making things pretty
-	elgg_extend_view('page/elements/head', 'framework/fonts/font-awesome');
-	elgg_extend_view('page/elements/head', 'framework/fonts/open-sans');
 }

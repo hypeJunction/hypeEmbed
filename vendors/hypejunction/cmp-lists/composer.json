@@ -1,9 +1,10 @@
 {
-	"name": "hypejunction/cmp-util",
-	"description": "Util classes",
+	"name": "hypejunction/cmp-lists",
+	"repository": "hypeJunction/cmp-lists",
+	"description": "List manipulation classes",
 	"homepage": "http://hypejunction.com",
 	"keywords": [
-		"classes", "util"
+		"classes", "lists"
 	],
 	"license": "GPL-2.0",
 	"authors": [
@@ -13,9 +14,6 @@
 		}
 	],
 	"autoload": {
-        "psr-4": {
-			"hypeJunction\\": "classes/hypeJunction/",
-			"UFCOE\\": "classes/UFCOE/"
-		}
+        "psr-4": {"hypeJunction\\": "classes/"}
     }
 }

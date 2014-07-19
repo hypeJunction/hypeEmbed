@@ -29,8 +29,7 @@
 		"php": ">=5.3.3",
 		"composer/installers": ">=1.0.8",
 		"hypejunction/cmp-util": "dev-master",
-		"hypejunction/cmp-filestore": "dev-master",
-		"smottt/wideimage": "dev-master"
+		"hypejunction/cmp-lists": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {

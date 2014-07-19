@@ -1,36 +1,5 @@
 [
     {
-        "name": "smottt/wideimage",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/smottt/WideImage.git",
-            "reference": "658e6b8699255724589e8fb86959306ec64af318"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/smottt/WideImage/zipball/658e6b8699255724589e8fb86959306ec64af318",
-            "reference": "658e6b8699255724589e8fb86959306ec64af318",
-            "shasum": ""
-        },
-        "time": "2014-02-10 17:56:34",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "WideImage": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-2.0",
-            "LGPL-2.1"
-        ],
-        "description": "An open-source PHP library for image manipulation. (With namespaces, PHP 5.3+)",
-        "homepage": "http://wideimage.sourceforge.net"
-    },
-    {
         "name": "composer/installers",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -122,26 +91,67 @@
         ]
     },
     {
+        "name": "hypejunction/cmp-lists",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hypeJunction/cmp-lists.git",
+            "reference": "4e9a5288487f6d7e0994c226f24621e0d1fee697"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/hypeJunction/cmp-lists/zipball/4e9a5288487f6d7e0994c226f24621e0d1fee697",
+            "reference": "4e9a5288487f6d7e0994c226f24621e0d1fee697",
+            "shasum": ""
+        },
+        "time": "2014-07-08 21:14:16",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "hypeJunction\\": "classes/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Ismayil Khayredinov",
+                "email": "ismayil.khayredinov@gmail.com"
+            }
+        ],
+        "description": "List manipulation classes",
+        "homepage": "http://hypejunction.com",
+        "keywords": [
+            "Lists",
+            "classes"
+        ]
+    },
+    {
         "name": "hypejunction/cmp-util",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/hypeJunction/cmp-util.git",
-            "reference": "b264166ecf39e3b74ddc88956b7c9b6419e8fe4d"
+            "reference": "1a3c5e53a761a2a35a2dda82dc4dd5c10d48ad0d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/hypeJunction/cmp-util/zipball/b264166ecf39e3b74ddc88956b7c9b6419e8fe4d",
-            "reference": "b264166ecf39e3b74ddc88956b7c9b6419e8fe4d",
+            "url": "https://api.github.com/repos/hypeJunction/cmp-util/zipball/1a3c5e53a761a2a35a2dda82dc4dd5c10d48ad0d",
+            "reference": "1a3c5e53a761a2a35a2dda82dc4dd5c10d48ad0d",
             "shasum": ""
         },
-        "time": "2014-06-13 09:13:41",
+        "time": "2014-07-19 06:56:49",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "hypeJunction\\": "classes/"
+                "hypeJunction\\": "classes/hypeJunction/",
+                "UFCOE\\": "classes/UFCOE/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -159,49 +169,6 @@
         "keywords": [
             "classes",
             "util"
-        ]
-    },
-    {
-        "name": "hypejunction/cmp-filestore",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/hypeJunction/cmp-filestore.git",
-            "reference": "f0f6b97a53211410c2a894ea64bfaff76d7684fa"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/hypeJunction/cmp-filestore/zipball/f0f6b97a53211410c2a894ea64bfaff76d7684fa",
-            "reference": "f0f6b97a53211410c2a894ea64bfaff76d7684fa",
-            "shasum": ""
-        },
-        "require": {
-            "smottt/wideimage": "dev-master"
-        },
-        "time": "2014-06-14 11:59:27",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "hypeJunction\\": "classes/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-2.0"
-        ],
-        "authors": [
-            {
-                "name": "Ismayil Khayredinov",
-                "email": "ismayil.khayredinov@gmail.com"
-            }
-        ],
-        "description": "Filestore classes",
-        "homepage": "http://hypejunction.com",
-        "keywords": [
-            "classes",
-            "filestore"
         ]
     }
 ]

@@ -6,6 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'hypeJunction\\' => array($baseDir . '/classes/hypeJunction'),
+    'hypeJunction\\' => array($baseDir . '/classes/hypeJunction', $vendorDir . '/hypejunction/cmp-util/classes', $vendorDir . '/hypejunction/cmp-filestore/classes'),
     'UFCOE\\' => array($baseDir . '/classes/UFCOE'),
 );

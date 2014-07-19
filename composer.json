@@ -4,7 +4,7 @@
 	"repository": "hypeJunction/hypeEmbed",
 	"description": "Alternative full-featured embed",
 	"homepage": "http://hypejunction.com",
-	"minimum-stability": "stable",
+	"minimum-stability": "dev",
 	"keywords": [
 		"elgg", "plugin", "embed", "link", "images"
 	],
@@ -27,7 +27,10 @@
 	},
 	"require": {
 		"php": ">=5.3.3",
-		"composer/installers": ">=1.0.8"
+		"composer/installers": ">=1.0.8",
+		"hypejunction/cmp-util": "1.0.*",
+		"hypejunction/cmp-filestore": "1.0.*",
+		"smottt/wideimage": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {

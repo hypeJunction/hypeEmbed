@@ -117,6 +117,34 @@ body {
 		background: $border-color;
 		font-size: 90%;
 	}
+
+	.elgg-module.elgg-module-embed {
+		font-family: "Open Sans", 'sans-serif';
+		background: lighten($border-color, 15%);
+		border: 1px solid $border-color;
+		margin: 0;
+		& > .elgg-head {
+			padding: 10px;
+			border-bottom: 1px solid $border-color;
+			h3 {
+				margin: 0;
+			}
+		}
+		& > .elgg-body {
+			background: white;
+			padding: 0;
+			.elgg-image-block {
+				padding: 10px;
+			}
+		}
+		& > .elgg-foot {
+			border-top: 1px solid $border-color;
+			padding: 10px;
+			a {
+				word-break: break-all;
+			}
+		}
+	}
 }
 .embed-ecml-error {
 	border-color: darkred;

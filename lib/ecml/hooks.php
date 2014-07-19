@@ -2,13 +2,9 @@
 
 namespace hypeJunction\Embed\ECML;
 
-use hypeJunction\Embed;
 use ElggFile;
-
-if (!defined('IFRAMELY_GATEWAY')) {
-	$iframely_gateway = elgg_get_plugin_setting('iframely_gateway', PLUGIN_ID);
-	define('IFRAMELY_GATEWAY', ($iframely_gateway) ? $iframely_gateway : 'http://iframely.com/');
-}
+use hypeJunction\Util\Embedder;
+use WideImage\Exception\Exception;
 
 /**
  * Add views in which ECML should be rendered
@@ -191,17 +187,8 @@ function render_embed($hook, $type, $content, $params) {
  * @param string $params	Additional params
  * @uses string $params['url'] URL to embed
  * @return string
+ * @deprecated since 1.1
  */
 function render_oembed_html($hook, $type, $return, $params) {
-
-	$url = elgg_extract('url', $params);
-	$meta = Embed\get_iframely_metatags_from_url($url, 'oembed');
-
-	if ($meta) {
-		return elgg_view("embed/oembed/$meta->type", array(
-			'meta' => $meta
-		));
-	}
-
 	return $return;
 }

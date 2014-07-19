@@ -51,6 +51,6 @@ function init() {
 		elgg_register_plugin_hook_handler('get_views', 'ecml', __NAMESPACE__ . '\\ECML\\get_views');
 		elgg_register_plugin_hook_handler('prepare:entity', 'embed', __NAMESPACE__ . '\\ECML\\prepare_entity_embed');
 		elgg_register_plugin_hook_handler('prepare:src', 'embed', __NAMESPACE__ . '\\ECML\\prepare_src_embed');
-		elgg_register_plugin_hook_handler('output:src', 'embed', __NAMESPACE__ . '\\ECML\\render_oembed_html');
+		//elgg_register_plugin_hook_handler('output:src', 'embed', __NAMESPACE__ . '\\ECML\\render_oembed_html');
 	}
 }

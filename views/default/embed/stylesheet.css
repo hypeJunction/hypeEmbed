@@ -152,6 +152,33 @@ body.embed-state-loading:before {
   background: #cccccc;
   font-size: 90%;
 }
+.embed-ecml-placeholder .elgg-module.elgg-module-embed {
+  font-family: "Open Sans", 'sans-serif';
+  background: #f2f2f2;
+  border: 1px solid #cccccc;
+  margin: 10px 0;
+}
+.embed-ecml-placeholder .elgg-module.elgg-module-embed > .elgg-head {
+  padding: 10px;
+  border-bottom: 1px solid #cccccc;
+}
+.embed-ecml-placeholder .elgg-module.elgg-module-embed > .elgg-head h3 {
+  margin: 0;
+}
+.embed-ecml-placeholder .elgg-module.elgg-module-embed > .elgg-body {
+  background: white;
+  padding: 0;
+}
+.embed-ecml-placeholder .elgg-module.elgg-module-embed > .elgg-body .elgg-image-block {
+  padding: 10px;
+}
+.embed-ecml-placeholder .elgg-module.elgg-module-embed > .elgg-foot {
+  border-top: 1px solid #cccccc;
+  padding: 10px;
+}
+.embed-ecml-placeholder .elgg-module.elgg-module-embed > .elgg-foot a {
+  word-break: break-all;
+}
 
 .embed-ecml-error {
   border-color: darkred;

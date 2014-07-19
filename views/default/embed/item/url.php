@@ -9,15 +9,6 @@ if (!isset($vars['url'])) {
 $url = elgg_extract('url', $vars);
 unset($vars['url']);
 
-// If the URL qualifies an existing entity, just use the entity view
-$guid = get_guid_from_url($url);
-if ($guid && ($entity = get_entity($guid))) {
-	echo elgg_view('embed/item/entity', array(
-		'entity' => $entity
-	));
-	return;
-}
-
 $output = elgg_view('output/url', array(
 	'href' => $url,
 	'text' => $url,

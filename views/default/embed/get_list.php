@@ -2,9 +2,12 @@
 
 namespace hypeJunction\Embed;
 
+use hypeJunction\Lists\ElggList;
+
 $options = elgg_extract('options', $vars);
 
-$count = elgg_get_entities($options);
+$list = new ElggList($options);
+$count = $list->getCount();
 
 if (!$count) {
 	echo elgg_autop(elgg_echo('embed:tab:content_items:empty'));
@@ -12,7 +15,7 @@ if (!$count) {
 }
 
 $options['count'] = false;
-$files = elgg_get_entities($options);
+$files = $list->getItems();
 
 echo elgg_view('embed/list', array(
 	'items' => $files,

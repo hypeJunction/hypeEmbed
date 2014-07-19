@@ -1,17 +1,48 @@
 [
     {
-        "name": "composer/installers",
-        "version": "v1.0.15",
-        "version_normalized": "1.0.15.0",
+        "name": "smottt/wideimage",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
-            "url": "https://github.com/composer/installers.git",
-            "reference": "8e6a72a78f6cfd537fde3350720dfdc9ae3c5621"
+            "url": "https://github.com/smottt/WideImage.git",
+            "reference": "658e6b8699255724589e8fb86959306ec64af318"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/composer/installers/zipball/8e6a72a78f6cfd537fde3350720dfdc9ae3c5621",
-            "reference": "8e6a72a78f6cfd537fde3350720dfdc9ae3c5621",
+            "url": "https://api.github.com/repos/smottt/WideImage/zipball/658e6b8699255724589e8fb86959306ec64af318",
+            "reference": "658e6b8699255724589e8fb86959306ec64af318",
+            "shasum": ""
+        },
+        "time": "2014-02-10 17:56:34",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "WideImage": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0",
+            "LGPL-2.1"
+        ],
+        "description": "An open-source PHP library for image manipulation. (With namespaces, PHP 5.3+)",
+        "homepage": "http://wideimage.sourceforge.net"
+    },
+    {
+        "name": "composer/installers",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/composer/installers.git",
+            "reference": "020fa1983597249bfcb947b485c5aac8e0e36652"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/composer/installers/zipball/020fa1983597249bfcb947b485c5aac8e0e36652",
+            "reference": "020fa1983597249bfcb947b485c5aac8e0e36652",
             "shasum": ""
         },
         "replace": {
@@ -22,7 +53,7 @@
             "composer/composer": "1.0.*@dev",
             "phpunit/phpunit": "4.1.*"
         },
-        "time": "2014-06-23 16:25:28",
+        "time": "2014-07-09 14:29:42",
         "type": "composer-installer",
         "extra": {
             "class": "Composer\\Installers\\Installer",
@@ -92,8 +123,8 @@
     },
     {
         "name": "hypejunction/cmp-util",
-        "version": "1.0.1",
-        "version_normalized": "1.0.1.0",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/hypeJunction/cmp-util.git",
@@ -131,40 +162,9 @@
         ]
     },
     {
-        "name": "smottt/wideimage",
+        "name": "hypejunction/cmp-filestore",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/smottt/WideImage.git",
-            "reference": "658e6b8699255724589e8fb86959306ec64af318"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/smottt/WideImage/zipball/658e6b8699255724589e8fb86959306ec64af318",
-            "reference": "658e6b8699255724589e8fb86959306ec64af318",
-            "shasum": ""
-        },
-        "time": "2014-02-10 17:56:34",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "WideImage": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-2.0",
-            "LGPL-2.1"
-        ],
-        "description": "An open-source PHP library for image manipulation. (With namespaces, PHP 5.3+)",
-        "homepage": "http://wideimage.sourceforge.net"
-    },
-    {
-        "name": "hypejunction/cmp-filestore",
-        "version": "1.0.3",
-        "version_normalized": "1.0.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/hypeJunction/cmp-filestore.git",

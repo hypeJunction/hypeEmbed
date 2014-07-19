@@ -17,6 +17,11 @@
 		<version>1.8</version>
     </requires>
 
+	<requires>
+		<type>php_extension</type>
+		<name>curl</name>
+	</requires>
+	
 	<provides>
 		<type>plugin</type>
 		<name>embed</name>

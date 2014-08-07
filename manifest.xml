@@ -21,7 +21,11 @@
 		<type>php_extension</type>
 		<name>curl</name>
 	</requires>
-	
+	<requires>
+		<type>php_extension</type>
+		<name>xml</name>
+	</requires>
+
 	<provides>
 		<type>plugin</type>
 		<name>embed</name>

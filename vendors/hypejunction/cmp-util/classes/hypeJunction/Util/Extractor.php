@@ -11,7 +11,7 @@ use UFCOE\Elgg\Url;
 
 class Extractor {
 
-	const REGEX_HASHTAG = '/(^|[^\w])#(\w*[^\s\d!-\/:-@]+\w*)/';
+	const REGEX_HASHTAG = '/\s+#(\w+)/i';
 	const REGEX_URL = '/(?<![=\/"\'])((ht|f)tps?:\/\/[^\s\r\n\t<>"\']+)/i';
 	const REGEX_EMAIL = '/(^|[^\w])([\w\-\.]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,})/i';
 	const REGEX_USERNAME = '/(^|[^\w])@([\p{L}\p{Nd}._]+)/u';
@@ -28,10 +28,10 @@ class Extractor {
 	function __construct($text = '') {
 
 		$this->text = $text;
-		$this->hashtags = self::extractHashtags($text);
 		$this->urls = self::extractURLs($text);
 		$this->emails = self::extractEmails($text);
 		$this->usernames = self::extractUsernames($text);
+		$this->hashtags = self::extractHashtags($text);
 		$this->html = $text;
 		$this->renderHTML();
 	}

@@ -6,19 +6,20 @@
 
 namespace hypeJunction\Util;
 
+use DOMDocument;
 use ElggEntity;
 use ElggFile;
 use Exception;
+use stdClass;
 use UFCOE\Elgg\Url;
 
 class Embedder {
-
-	const IframelyGateway = 'http://iframely.com/';
 
 	protected $url;
 	protected $guid;
 	protected $entity;
 	protected $view;
+	protected $meta;
 	static $cache;
 
 	function __construct($url = '') {
@@ -80,7 +81,8 @@ class Embedder {
 			return $embedder->getView($params);
 		} catch (Exception $ex) {
 			return elgg_view('output/longtext', array(
-				'value' => $url
+				'value' => $url,
+				'class' => 'embedder-invalid-url',
 			));
 		}
 	}
@@ -132,83 +134,72 @@ class Embedder {
 	/**
 	 * Render a uniform view for embedded links
 	 * Use 'output:src', 'embed' hook to override the output
+	 * @param array $params		Additional params to pass to the hook
+	 * @uses boolean $params['module']	Wrap the output into an elgg-module-embed
 	 * @return string
 	 */
 	private function getSrcView($params = array()) {
 
-		$meta = $this->extractMeta('oembed');
-
-		$title = $meta->title;
+		$meta = $this->extractMeta();
 
 		if ($meta->provider_name) {
 			$class = 'embed-' . preg_replace('/[^a-z0-9\-]/i', '-', strtolower($meta->provider_name));
 		}
 
-		switch ($meta->type) {
-
-			default :
-				$link = elgg_view('output/url', array(
-					'href' => $this->url
-				));
-				$body = elgg_view('output/longtext', array(
-					'value' => $link,
-				));
-				break;
-
-			case 'link' :
-
-				if ($meta->thumbnail_url) {
-					$icon = elgg_view('output/img', array(
-						'src' => $meta->thumbnail_url,
-						'width' => 100,
-					));
-				}
-
-				$description = elgg_view('output/longtext', array(
-					'value' => $meta->description,
-				));
-
-				$footer = elgg_view('output/url', array(
-					'href' => ($meta->canonical) ? $meta->canonical : $meta->url,
-					'target' => '_blank',
-				));
-
-				$body = elgg_view_image_block($icon, $description);
-				break;
-
-			case 'photo' :
-
-				$body = elgg_view('output/url', array(
+		if ($meta->html) {
+			$body = str_replace('http://', '//', $meta->html);
+		} else {
+			if ($meta->oembed_url && $meta->type == 'photo') {
+				$icon = elgg_view('output/url', array(
 					'text' => elgg_view('output/img', array(
-						'src' => $meta->url,
+						'src' => str_replace('http://', '//', $meta->oembed_url),
 						'alt' => $meta->title,
 					)),
 					'href' => $meta->canonical,
+					'class' => 'embedder-photo',
 					'target' => '_blank',
 				));
-
-				$footer = elgg_view('output/url', array(
-					'href' => ($meta->canonical) ? $meta->canonical : $meta->url,
-					'target' => '_blank',
+			}
+			if ($meta->thumbnail_url) {
+				$icon = elgg_view('output/img', array(
+					'src' => $meta->thumbnail_url,
+					'width' => 100,
+					'class' => 'embedder-thumbnail',
 				));
-				break;
-
-			case 'rich' :
-			case 'video' :
-
-				$title = $meta->title;
-				$footer = elgg_view('output/url', array(
-					'href' => ($meta->canonical) ? $meta->canonical : $meta->url,
-					'target' => '_blank',
-				));
-				$body = $meta->html;
-				break;
+			}
 		}
 
-		$output = elgg_view_module('embed', $title, $body, array(
-			'class' => $class,
-			'footer' => $footer,
+		if (!$body && $meta->description) {
+			$body .= elgg_view('output/longtext', array(
+				'value' => elgg_get_excerpt($meta->description),
+				'class' => 'embedder-description'
+			));
+		}
+
+		$footer = elgg_view('output/url', array(
+			'href' => ($meta->canonical) ? $meta->canonical : $meta->url,
+			'target' => '_blank',
 		));
+
+		if (!$body) {
+			$body = $footer;
+			$footer = false;
+		}
+
+		if ($icon) {
+			$body = elgg_view_image_block($icon, $body, array(
+				'class' => 'embedder-image-block',
+			));
+		}
+
+		if (elgg_extract('module', $params, true)) {
+			$output = elgg_view_module('embed', $meta->title, $body, array(
+				'class' => $class,
+				'footer' => $footer,
+			));
+		} else {
+			$output = $body;
+		}
 
 		$params['src'] = $this->url;
 		$params['meta'] = $meta;
@@ -235,44 +226,193 @@ class Embedder {
 	}
 
 	/**
-	 * Extract page oembed/iframely tags
-	 * @param string $endpoint
+	 * Extract page meta tags
 	 * @return array
 	 */
-	public function extractMeta($endpoint = '') {
+	public function extractMeta() {
 
-		if (isset(self::$cache[$this->url][$endpoint])) {
-			return self::$cache[$this->url][$endpoint];
+		if (isset(self::$cache[$this->url])) {
+			return self::$cache[$this->url];
 		}
 
-		switch ($endpoint) {
-			case 'oembed' :
-				$gateway = $this->getGateway() . 'oembed?url=' . $this->url;
-				break;
+		$this->prepareMeta();
 
-			default :
-			case 'iframely' :
-				$gateway = $this->getGateway() . 'iframely?uri=' . $this->url;
-				break;
-		}
-
-		$ch = curl_init($gateway);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_POST, false);
-		$json = curl_exec($ch);
-		curl_close($ch);
-
-		$meta = json_decode($json);
-		self::$cache[$this->url][$endpoint] = $meta;
-		return $meta;
+		self::$cache[$this->url] = $this->meta;
+		return $this->meta;
 	}
 
 	/**
-	 * Get Iframely server base URL
+	 * Get contents of a remote page
+	 * @param string $url
 	 * @return string
 	 */
-	private function getGateway() {
-		return elgg_trigger_plugin_hook('iframely.gateway', 'embed', null, self::IframelyGateway);
+	private function getContents($url = '') {
+
+		if (!$url) {
+			$url = $this->url;
+		}
+
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0');
+		curl_setopt($ch, CURLOPT_POST, false);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+
+//		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+//		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+		$response = curl_exec($ch);
+		curl_close($ch);
+
+		return $response;
+	}
+
+	/**
+	 * Extract meta tags and oEmbed embed code from the remote URL
+	 * @return void
+	 */
+	private function prepareMeta() {
+
+		if (!$this->meta) {
+			$this->meta = new stdClass();
+		}
+
+		$this->meta->url = $this->url;
+		$this->meta->title = parse_url($this->url, PHP_URL_HOST);
+		$this->meta->description = '';
+		$this->meta->thumbnails = array();
+		$this->meta->icons = array();
+
+		$html = $this->getContents();
+
+		$doc = new DOMDocument();
+		@$doc->loadHTML($html);
+
+		// Get document title
+		$node = $doc->getElementsByTagName('title');
+		$title = $node->item(0)->nodeValue;
+		if ($title) {
+			$this->meta->title = $title;
+		}
+
+		// Get oEmbed content and canonical URLs
+		$nodes = $doc->getElementsByTagName('link');
+		foreach ($nodes as $node) {
+			$rel = $node->getAttribute('rel');
+			$href = $node->getAttribute('href');
+
+			switch ($rel) {
+
+				case 'icon' :
+					$this->meta->icons[] = $href;
+					break;
+
+				case 'canonical' :
+					$this->meta->canonical = $href;
+					break;
+
+				case 'alternate' :
+					$type = $node->getAttribute('type');
+					if ($type == 'application/json+oembed' || $type == 'text/json+oembed') {
+						$oembed_endpoint = $href;
+					}
+					break;
+			}
+		}
+
+		if ($oembed_endpoint) {
+			$json = $this->getContents($oembed_endpoint);
+			if ($json) {
+				$oembed_params = json_decode($json, true);
+				if ($oembed_params) {
+					foreach ($oembed_params as $key => $value) {
+						if (!$this->meta->$key) {
+							$this->meta->$key = $value;
+						}
+						if ($key == 'url') {
+							$this->meta->oembed_url = $value;
+						}
+						if ($key == 'thumbnail_url' && !$this->meta->oembed_url) {
+							$this->meta->oembed_url = $value;
+						}
+					}
+				}
+			}
+		}
+
+		if ($title) {
+			$this->meta->title = $title;
+		}
+
+		$nodes = $doc->getElementsByTagName('meta');
+		if (!empty($nodes)) {
+			foreach ($nodes as $node) {
+				$name = $node->getAttribute('name');
+				if (!$name) {
+					$name = $node->getAttribute('property');
+				}
+				$content = $node->getAttribute('content');
+
+				switch ($name) {
+
+					default :
+						if ($name && !$this->meta->$name) {
+							$name = str_replace(':', '_', $name);
+							$this->meta->$name = $content;
+						}
+						break;
+
+					case 'title' :
+					case 'og:title' :
+					case 'twitter:title' :
+						if (!$this->meta->title) {
+							$this->meta->title = $content;
+						}
+						break;
+
+					case 'description' :
+					case 'og:description' :
+					case 'twitter:description' :
+						if (!$this->meta->description) {
+							$this->meta->description = $content;
+						}
+						break;
+
+					case 'keywords' :
+						$this->meta->keywords = $content;
+						break;
+
+					case 'og:site_name' :
+					case 'twitter:site' :
+						if (!$this->meta->provider_name) {
+							$this->meta->provider_name = $content;
+						}
+						break;
+
+					case 'og:type' :
+						$this->meta->og_type = $content;
+						break;
+
+					case 'og:image' :
+					case 'twitter:image' :
+						$this->meta->thumbnails[] = $content;
+						break;
+				}
+			}
+		}
+
+		if (count($this->meta->thumbnails)) {
+			// Display a thumbnail parsed from <meta> tags
+			$this->meta->thumbnail_url = $this->meta->thumbnails[0];
+		} else if (count($this->meta->icons)) {
+			// Display an icon parsed from <link> tags
+			$this->meta->thumbnail_url = $this->meta->icons[0];
+		} else {
+			// Display a favicon
+			$this->meta->thumbnail_url = $favicon = "http://g.etfv.co/{$this->url}";
+		}
+
 	}
 
 }

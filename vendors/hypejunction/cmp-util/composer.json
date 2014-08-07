@@ -1,6 +1,7 @@
 {
 	"name": "hypejunction/cmp-util",
-	"description": "Util classes",
+	"repository": "hypeJunction/cmp-util",
+	"description": "Util classes for working with embeds",
 	"homepage": "http://hypejunction.com",
 	"keywords": [
 		"classes", "util"
@@ -12,6 +13,11 @@
 			"email": "ismayil.khayredinov@gmail.com"
 		}
 	],
+	"require": {
+		"php": ">=5.3.3",
+		"ext-curl": "*",
+		"ext-xml": "*"
+	},
 	"autoload": {
         "psr-4": {
 			"hypeJunction\\": "classes/hypeJunction/",

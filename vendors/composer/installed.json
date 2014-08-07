@@ -1,45 +1,5 @@
 [
     {
-        "name": "hypejunction/cmp-lists",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/hypeJunction/cmp-lists.git",
-            "reference": "4e9a5288487f6d7e0994c226f24621e0d1fee697"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/hypeJunction/cmp-lists/zipball/4e9a5288487f6d7e0994c226f24621e0d1fee697",
-            "reference": "4e9a5288487f6d7e0994c226f24621e0d1fee697",
-            "shasum": ""
-        },
-        "time": "2014-07-08 21:14:16",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "hypeJunction\\": "classes/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-2.0"
-        ],
-        "authors": [
-            {
-                "name": "Ismayil Khayredinov",
-                "email": "ismayil.khayredinov@gmail.com"
-            }
-        ],
-        "description": "List manipulation classes",
-        "homepage": "http://hypejunction.com",
-        "keywords": [
-            "Lists",
-            "classes"
-        ]
-    },
-    {
         "name": "composer/installers",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -175,6 +135,46 @@
         "keywords": [
             "classes",
             "util"
+        ]
+    },
+    {
+        "name": "hypejunction/cmp-lists",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hypeJunction/cmp-lists.git",
+            "reference": "d158309a281ba5e43ef73258a72381111bf77c65"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/hypeJunction/cmp-lists/zipball/d158309a281ba5e43ef73258a72381111bf77c65",
+            "reference": "d158309a281ba5e43ef73258a72381111bf77c65",
+            "shasum": ""
+        },
+        "time": "2014-08-07 12:43:55",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "hypeJunction\\": "classes/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Ismayil Khayredinov",
+                "email": "ismayil.khayredinov@gmail.com"
+            }
+        ],
+        "description": "List manipulation classes",
+        "homepage": "http://hypejunction.com",
+        "keywords": [
+            "Lists",
+            "classes"
         ]
     }
 ]

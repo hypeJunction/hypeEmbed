@@ -2,14 +2,13 @@
 
 namespace hypeJunction\Embed;
 
-use hypeJunction\Util\Embedder;
-
 $url = elgg_extract('src', $vars);
-
-$content = Embedder::getEmbedView($url, $vars);
+$content = elgg_trigger_plugin_hook('format:src', 'embed', $vars, $url);
 
 ?>
 
 <div class="embed-ecml-placeholder">
-	<?php echo $content ?>
+	<?php
+		echo $content;
+	?>
 </div>

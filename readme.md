@@ -15,15 +15,11 @@ Improved and extended embedding for Elgg 1.8 & 1.9
 
 ## Notes
 
-* The plugin will work without ECML enabled, but to get the most out of it,
-download and enable ECML - https://github.com/Elgg/ecml
-* Iframely allows their servers to be used for development and non-profit purposes.
-If you are operating a for-profit website, create a self-hosted instance of
-Iframely and change the Gateway URL in the plugin settings - http://iframely.com/
-* If you do not want to use Iframely, use ```'output:src','embed'``` hook that receives
-the URL parameter, and supply back the desired HTML markup obtained from another
-oEmbed or similar extraction service
-* If you do not have ECML enabled, you can use the URL embeds with JQuery Media Embedding -
+* For best results, install hypeScraper and ECML
+https://github.com/hypeJunction/hypeScraper
+https://github.com/Elgg/ecml
+
+* If you do not have ECML or hypeScraper enabled, you can use the URL embeds with JQuery Media Embedding -
 http://community.elgg.org/plugins/828195/1.0/jquery-media-embedding-for-18
 
 ## Using Elgg Customizable Markup Language (ECML)

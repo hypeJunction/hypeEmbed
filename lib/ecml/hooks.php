@@ -3,8 +3,6 @@
 namespace hypeJunction\Embed\ECML;
 
 use ElggFile;
-use hypeJunction\Util\Embedder;
-use WideImage\Exception\Exception;
 
 /**
  * Add views in which ECML should be rendered

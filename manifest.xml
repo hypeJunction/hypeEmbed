@@ -33,6 +33,10 @@
 	
 	<suggests>
 		<type>plugin</type>
+		<name>hypeScraper</name>
+	</suggests>
+	<suggests>
+		<type>plugin</type>
 		<name>file</name>
 		<version>1.8.1</version>
 	</suggests>
@@ -44,17 +48,4 @@
 		<type>plugin</type>
 		<name>elgg_editor_preview</name>
 	</suggests>
-
-	<screenshot>
-		<description>Lightbox</description>
-		<path>screenshots/lightbox.png</path>
-	</screenshot>
-	<screenshot>
-		<description>ECML</description>
-		<path>screenshots/ecml.png</path>
-	</screenshot>
-	<screenshot>
-		<description>Rendered Output</description>
-		<path>screenshots/output.png</path>
-	</screenshot>
 </plugin_manifest>

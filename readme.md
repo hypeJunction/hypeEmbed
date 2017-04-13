@@ -8,6 +8,10 @@ hypeEmbed
 * Search and embed all other registered object types on the spot
 * Embed URL previews and rich-media players
 
+![Embed Popup](https://raw.github.com/hypeJunction/hypeEmbed/master/screenshots/embed.png "Embed Popup")
+![Editor](https://raw.github.com/hypeJunction/hypeEmbed/master/screenshots/editor.png "Editor")
+![Player](https://raw.github.com/hypeJunction/hypeEmbed/master/screenshots/player.png "Player")
+
 ## Shortcodes
 
 The plugin supports `embed` and `player` shorcodes.

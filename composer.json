@@ -1,34 +1,28 @@
 {
 	"name": "hypejunction/hypeembed",
 	"type": "elgg-plugin",
-	"repository": "hypeJunction/hypeEmbed",
-	"description": "Alternative full-featured embed",
+	"description": "Embed for Elgg",
 	"homepage": "http://hypejunction.com",
-	"minimum-stability": "dev",
 	"keywords": [
-		"elgg", "plugin", "embed", "link", "images"
+		"elgg", "plugin", "embed", "link", "images", "shortcode"
 	],
 	"license": "GPL-2.0",
 	"authors": [
 		{
 			"name": "Ismayil Khayredinov",
-			"email": "ismayil.khayredinov@gmail.com"
+			"email": "info@hypejunction.com"
 		}
 	],
 	"extra": {
 		"installer-name": "hypeEmbed"
 	},
-	"config": {
-		"vendor-dir": "vendors",
-		"preferred-install": "dist"
-	},
-	"suggest": {
-		"Elgg/ecml": "@stable"
-	},
 	"require": {
-		"php": ">=5.3.3",
-		"composer/installers": ">=1.0.8",
-		"hypejunction/cmp-lists": "dev-master"
+		"php": ">=5.5",
+		"composer/installers": "~1.0"
+	},
+	"autoload": {
+		"psr-0": {
+			"": "classes/"
+		}
 	}
 }
-

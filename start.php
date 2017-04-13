@@ -1,55 +1,57 @@
 <?php
 
 /**
- * Embeds
- *
- * @package hypeJunction
- * @subpackage Embed
- *
- * @author Ismayil Khayredinov <ismayil.khayredinov@gmail.com>
+ * Improved embedding experience
+ * 
+ * @author Ismayil Khayredinov <info@hypejunction.com>
  */
+require __DIR__ . '/autoloader.php';
 
-namespace hypeJunction\Embed;
+use hypeJunction\Embed\Lists;
+use hypeJunction\Embed\Menus;
+use hypeJunction\Embed\Shortcodes;
 
-const PLUGIN_ID = 'hypeEmbed';
+elgg_register_event_handler('init', 'system', function() {
 
-require_once __DIR__ . '/vendors/autoload.php';
+	elgg_register_plugin_hook_handler('register', 'menu:embed', [Menus::class, 'setupEmbedMenu']);
+	elgg_register_plugin_hook_handler('filter_options', 'object', [Lists::class, 'addFileSimpletypeOptions']);
 
-require_once __DIR__ . '/lib/functions.php';
-require_once __DIR__ . '/lib/hooks.php';
-require_once __DIR__ . '/lib/page_handlers.php';
+	elgg_register_ajax_view('embed/safe/entity');
+	elgg_register_ajax_view('embed/safe/player');
 
-require_once __DIR__ . '/lib/ecml/hooks.php';
+	elgg_register_action('embed/player', __DIR__ . '/actions/embed/player.php');
 
-elgg_register_event_handler('init', 'system', __NAMESPACE__ . '\\init');
+	elgg_register_plugin_hook_handler('view_vars', 'output/longtext', [Shortcodes::class, 'filterLongtextOutputVars'], 9999);
+	elgg_register_plugin_hook_handler('view_vars', 'output/excerpt', [Shortcodes::class, 'filterExcerptVars'], 9999);
+});
 
-function init() {
+/**
+ * Expand shortcodes
+ * 
+ * @param string $value Text
+ * @return string
+ */
+function hypeapps_expand_embed_shortcodes($value) {
+	return Shortcodes::expandShortcodes($value);
+}
 
-	elgg_extend_view('css/elgg', 'embed/css');
-	elgg_extend_view('css/admin', 'embed/css');
+/**
+ * Strip shortcodes
+ *
+ * @param string $value Text
+ * @return string
+ */
+function hypeapps_strip_embed_shortcodes($value) {
+	return Shortcodes::stripShortcodes($value);
+}
 
-	// Load fonts
-	elgg_register_css('fonts.font-awesome', '/mod/' . PLUGIN_ID . '/vendors/fonts/font-awesome.css');
-	elgg_load_css('fonts.font-awesome');
-	elgg_register_css('fonts.open-sans', '/mod/' . PLUGIN_ID . '/vendors/fonts/open-sans.css');
-	elgg_load_css('fonts.open-sans');
-
-	elgg_register_page_handler('embed', __NAMESPACE__ . '\\embed_page_handler');
-
-	elgg_register_simplecache_view('js/embed/embed');
-	elgg_register_js('elgg.embed', elgg_get_simplecache_url('js', 'embed/embed'), 'footer');
-
-	elgg_register_plugin_hook_handler('register', 'menu:longtext', __NAMESPACE__ . '\\longtext_menu_setup');
-	elgg_register_plugin_hook_handler('register', 'menu:embed', __NAMESPACE__ . '\\embed_filter_menu_setup', 1000);
-
-	elgg_register_ajax_view('embed/item/entity');
-
-	elgg_register_action('embed/embed_src', __DIR__ . '/actions/embed/embed_src.php');
-
-	if (elgg_is_active_plugin('ecml')) {
-		elgg_register_plugin_hook_handler('render:embed', 'ecml', __NAMESPACE__ . '\\ECML\\render_embed');
-		elgg_register_plugin_hook_handler('get_views', 'ecml', __NAMESPACE__ . '\\ECML\\get_views');
-		elgg_register_plugin_hook_handler('prepare:entity', 'embed', __NAMESPACE__ . '\\ECML\\prepare_entity_embed');
-		elgg_register_plugin_hook_handler('prepare:src', 'embed', __NAMESPACE__ . '\\ECML\\prepare_src_embed');
-	}
+/**
+ * Prepares a shortcode tag
+ *
+ * @param string $shortcode Shortcode name
+ * @param array  $attrs     Attributes
+ * @return string
+ */
+function hypeapps_get_shortcode_embed_tag($shortcode, array $attrs = []) {
+	return Shortcodes::getShortcodeTag($shortcode, $attrs);
 }

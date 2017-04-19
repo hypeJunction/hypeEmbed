@@ -1,3 +1,13 @@
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/hypeJunction/hypeEmbed/compare/2.0.0...v2.0.1) (2017-04-19)
+
+
+### Bug Fixes
+
+* **privacy:** only allow public-facing entities to be embedded ([ad4f384](https://github.com/hypeJunction/hypeEmbed/commit/ad4f384))
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/hypeJunction/hypeEmbed/compare/1.1.2...v2.0.0) (2017-04-13)
 

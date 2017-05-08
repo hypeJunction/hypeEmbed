@@ -1,3 +1,13 @@
+<a name="2.1.3"></a>
+## [2.1.3](https://github.com/hypeJunction/hypeEmbed/compare/2.1.2...v2.1.3) (2017-05-08)
+
+
+### Bug Fixes
+
+* **language:** add missing keys ([536e283](https://github.com/hypeJunction/hypeEmbed/commit/536e283))
+
+
+
 <a name="2.1.2"></a>
 ## [2.1.2](https://github.com/hypeJunction/hypeEmbed/compare/2.1.1...v2.1.2) (2017-05-08)
 

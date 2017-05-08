@@ -1,3 +1,14 @@
+<a name="2.1.4"></a>
+## [2.1.4](https://github.com/hypeJunction/hypeEmbed/compare/2.1.3...v2.1.4) (2017-05-08)
+
+
+### Bug Fixes
+
+* **files:** fix gif display ([9f1c75d](https://github.com/hypeJunction/hypeEmbed/commit/9f1c75d))
+* **shortcode:** remove redundant attributes from shortcodes ([2bb71f3](https://github.com/hypeJunction/hypeEmbed/commit/2bb71f3))
+
+
+
 <a name="2.1.3"></a>
 ## [2.1.3](https://github.com/hypeJunction/hypeEmbed/compare/2.1.2...v2.1.3) (2017-05-08)
 

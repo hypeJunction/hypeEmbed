@@ -8,6 +8,10 @@ hypeEmbed
 * Search and embed all other registered object types on the spot
 * Embed URL previews and rich-media players
 
+## Acknowledgements
+
+* Upgrade for Elgg 2.3 has been sponsored by ApostleTree, LLC
+
 ![Embed Popup](https://raw.github.com/hypeJunction/hypeEmbed/master/screenshots/embed.png "Embed Popup")
 ![Editor](https://raw.github.com/hypeJunction/hypeEmbed/master/screenshots/editor.png "Editor")
 ![Player](https://raw.github.com/hypeJunction/hypeEmbed/master/screenshots/player.png "Player")

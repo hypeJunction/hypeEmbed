@@ -41,7 +41,7 @@ class Menus {
 		}
 
 		$page_owner = elgg_get_page_owner_entity();
-		
+
 		foreach ($return as &$item) {
 			if (!$item instanceof \ElggMenuItem) {
 				continue;
@@ -55,10 +55,21 @@ class Menus {
 			$href = elgg_http_add_url_query_elements($item->getHref(), [
 				'container_guid' => $page_owner->guid,
 			]);
-			
+
 			$item->setHref($href);
 		}
-		
+
+		if (elgg_is_admin_logged_in()) {
+			$return[] = ElggMenuItem::factory(array(
+						'name' => 'assets',
+						'text' => elgg_echo('embed:assets'),
+						'priority' => 900,
+						'data' => array(
+							'view' => 'embed/tab/assets',
+						),
+			));
+		}
+
 		return $return;
 	}
 

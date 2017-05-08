@@ -1,0 +1,12 @@
+.embed-asset-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px auto;
+}
+.embed-asset-gallery > li {
+    max-width: 300px;
+}
+.embed-asset-gallery img {
+    max-width: 100%;
+    max-height: 100px;
+}

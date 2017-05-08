@@ -7,7 +7,7 @@ if (!elgg_instanceof($entity)) {
 	return;
 }
 
-if ($entity instanceof ElggFile && $entity->simpletype == 'image') {
+if ($entity instanceof ElggFile && $entity->simpletype == 'image' && $entity->getMimeType() != 'image/gif') {
 	$output = elgg_view('output/img', [
 		'src' => elgg_get_embed_url($entity, 'large'),
 		'alt' => $entity->getDisplayName(),

@@ -37,3 +37,12 @@ By default, only shortcodes passed to `output/longtext` view will be expanded au
 You can manually expand shortcodes using `hypeapps_expand_embed_shortcodes($text)`.
 
 You can strip shortcodes (e.g. when displaying a summary), using `hypeapps_strip_embed_shortcodes($text)`.
+
+### Static assets
+
+If you are using the same images across multiple posts, you may way to use static assets,
+as they allow you to take advantage of simplecache, thus offering better performance than
+file entities.
+
+Create a folder in your dataroot `/embed/` and place your image files in there, flush the caches,
+and you will see your images in the Assets tab of the embed lightbox window.

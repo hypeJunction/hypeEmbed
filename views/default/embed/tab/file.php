@@ -7,7 +7,7 @@ if (!$page_owner) {
 
 $options = [
 	'types' => 'object',
-	'subtypes' => 'file',
+	'subtypes' => ['file', 'embed_file'],
 	'limit' => 5,
 	'no_results' => elgg_echo('embed:tab:file:empty'),
 	'base_url' => elgg_http_add_url_query_elements('embed/tab/file', [

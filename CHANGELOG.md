@@ -1,3 +1,13 @@
+<a name="2.1.2"></a>
+## [2.1.2](https://github.com/hypeJunction/hypeEmbed/compare/2.1.1...v2.1.2) (2017-05-08)
+
+
+### Bug Fixes
+
+* **file:** fix non-image file view ([f4d9f65](https://github.com/hypeJunction/hypeEmbed/commit/f4d9f65))
+
+
+
 <a name="2.1.1"></a>
 ## [2.1.1](https://github.com/hypeJunction/hypeEmbed/compare/2.1.0...v2.1.1) (2017-05-08)
 

@@ -30,6 +30,9 @@ $english = array(
 
 	'embed:settings:river_preview' => 'Add player view to river item view',
 	'embed:settings:summary_preview' => 'Add player view to item\'s summary view',
+
+	'embed:tab:file:empty' => 'No files have been uploaded yet',
+	'embed:tab:posts:empty' => 'No items have been posted yet',
 );
 
 add_translation("en", $english);

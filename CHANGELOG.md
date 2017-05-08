@@ -1,3 +1,9 @@
+<a name="2.1.5"></a>
+## [2.1.5](https://github.com/hypeJunction/hypeEmbed/compare/2.1.4...v2.1.5) (2017-05-08)
+
+
+
+
 <a name="2.1.4"></a>
 ## [2.1.4](https://github.com/hypeJunction/hypeEmbed/compare/2.1.3...v2.1.4) (2017-05-08)
 

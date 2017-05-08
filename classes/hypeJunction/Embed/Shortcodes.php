@@ -79,7 +79,11 @@ class Shortcodes {
 			}
 		}
 
-		$attributes = elgg_format_attributes($attrs);
+		if (isset($attrs['url']) && $attrs['url'] == elgg_get_site_url()) {
+			unset($attrs['url']);
+		}
+		
+		$attributes = elgg_format_attributes(array_filter($attrs));
 		return "[$shortcode $attributes]";
 	}
 

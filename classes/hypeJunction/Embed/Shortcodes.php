@@ -44,7 +44,7 @@ class Shortcodes {
 				$value = htmlspecialchars_decode($value, ENT_QUOTES);
 				$attributes[$key] = $value;
 			}
-			
+
 			return elgg_view("embed/shortcode/$shortcode", $attributes);
 		}, $value);
 	}
@@ -92,6 +92,8 @@ class Shortcodes {
 
 		$value = elgg_extract('value', $vars, '');
 		$value = html_entity_decode($value, ENT_QUOTES, 'UTF-8');
+
+		$value = Legacy::update($value);
 
 		$shortcodes = implode('|', self::$shortcodes);
 

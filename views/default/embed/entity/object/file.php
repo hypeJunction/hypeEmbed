@@ -5,7 +5,7 @@ if (!$entity instanceof ElggFile) {
 	return;
 }
 
-$mime = $file->getMimeType();
+$mime = $entity->getMimeType();
 $base_type = substr($mime, 0, strpos($mime, '/'));
 
 $extra = '';

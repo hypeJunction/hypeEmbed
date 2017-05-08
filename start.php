@@ -26,6 +26,8 @@ elgg_register_event_handler('init', 'system', function() {
 	elgg_register_plugin_hook_handler('view_vars', 'output/plaintext', [Shortcodes::class, 'filterLongtextOutputVars'], 9999);
 	elgg_register_plugin_hook_handler('view_vars', 'output/longtext', [Shortcodes::class, 'filterLongtextOutputVars'], 9999);
 	elgg_register_plugin_hook_handler('view_vars', 'output/excerpt', [Shortcodes::class, 'filterExcerptVars'], 9999);
+	elgg_register_plugin_hook_handler('view_vars', 'river/elements/layout', [Shortcodes::class, 'addRiverPreview'], 999);
+	elgg_register_plugin_hook_handler('view_vars', 'object/elements/summary/content', [Shortcodes::class, 'addSummaryPreview'], 999);
 
 	elgg_extend_view('forms/file/upload', 'embed/forms/upload', 100);
 	elgg_register_plugin_hook_handler('action', 'file/upload', [Uploads::class, 'handleUpload'], 100);

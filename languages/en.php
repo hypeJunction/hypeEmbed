@@ -27,7 +27,9 @@ $english = array(
 
 	'admin:upgrades:embed:ckeditor_file' => 'Migrate CKEditor files',
 	'admin:upgrades:embed:ckeditor_file:description' => 'Migrate files uploaded with CKEditor to embed-compatible storage',
-	
+
+	'embed:settings:river_preview' => 'Add player view to river item view',
+	'embed:settings:summary_preview' => 'Add player view to item\'s summary view',
 );
 
 add_translation("en", $english);

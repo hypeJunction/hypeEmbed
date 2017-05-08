@@ -2,6 +2,9 @@
 
 namespace hypeJunction\Embed;
 
+use ElggObject;
+use ElggRiverItem;
+
 /**
  * @access private
  */
@@ -159,6 +162,89 @@ class Shortcodes {
 					'href' => $matches[2],
 					'rel' => 'nofollow',
 						), $text);
+	}
+
+	/**
+	 * Add player preview to river items
+	 * 
+	 * @param string $hook   "view_vars"
+	 * @param string $type   "river/elements/layout"
+	 * @param array  $vars   View vars
+	 * @param array  $params Hook params
+	 * @return array
+	 */
+	public static function addRiverPreview($hook, $type, $vars, $params) {
+
+		if (!elgg_get_plugin_setting('river_preview', 'hypeEmbed')) {
+			return;
+		}
+
+		if (!empty($vars['attachments'])) {
+			return;
+		}
+
+		$item = elgg_extract('item', $vars);
+		if (!$item instanceof ElggRiverItem) {
+			return;
+		}
+
+		$object = $item->getObjectEntity();
+		if (!$object instanceof ElggObject) {
+			return;
+		}
+
+		$description = $object->description;
+		if (!$description) {
+			return;
+		}
+
+		$description = html_entity_decode($description, ENT_QUOTES, 'UTF-8');
+		preg_match_all("/\[player.*?\]/", $description, $matches);
+		if (!empty($matches[0][0])) {
+			$vars['attachments'] = elgg_format_element('div', [
+				'class' => 'embed-player-listing-preview',
+					], Shortcodes::expandShortcodes($matches[0][0])
+			);
+		}
+
+		return $vars;
+	}
+
+	/**
+	 * Add player preview to summary view
+	 *
+	 * @param string $hook   "view_vars"
+	 * @param string $type   "object/elements/summary/content"
+	 * @param array  $vars   View vars
+	 * @param array  $params Hook params
+	 * @return array
+	 */
+	public static function addSummaryPreview($hook, $type, $vars, $params) {
+
+		if (!elgg_get_plugin_setting('summary_preview', 'hypeEmbed')) {
+			return;
+		}
+
+		$entity = elgg_extract('entity', $vars);
+		if (!$entity instanceof ElggObject) {
+			return;
+		}
+
+		$description = $entity->description;
+		if (!$description) {
+			return;
+		}
+
+		$description = html_entity_decode($description, ENT_QUOTES, 'UTF-8');
+		preg_match_all("/\[player.*?\]/", $description, $matches);
+		if (!empty($matches[0][0])) {
+			$vars['content'] .= elgg_format_element('div', [
+				'class' => 'embed-player-listing-preview',
+					], Shortcodes::expandShortcodes($matches[0][0])
+			);
+		}
+
+		return $vars;
 	}
 
 }

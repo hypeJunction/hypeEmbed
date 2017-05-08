@@ -1,3 +1,14 @@
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/hypeJunction/hypeEmbed/compare/2.0.1...v2.1.0) (2017-05-08)
+
+
+### Features
+
+* **files:** improve file embedding UX ([e7e9e66](https://github.com/hypeJunction/hypeEmbed/commit/e7e9e66))
+* **player:** add a setting to display a player in river and summary listings ([d710d7f](https://github.com/hypeJunction/hypeEmbed/commit/d710d7f))
+
+
+
 <a name="2.0.1"></a>
 ## [2.0.1](https://github.com/hypeJunction/hypeEmbed/compare/2.0.0...v2.0.1) (2017-04-19)
 

@@ -68,25 +68,4 @@ class Router {
 		}
 	}
 
-	/**
-	 * Rewrite URLs added by the old ckeditor_addons plugin
-	 *
-	 * @param string $hook   "view_vars"
-	 * @param string $type   Input names
-	 * @param array  $return View vars
-	 * @param array  $params Hook params
-	 * @return array
-	 */
-	public static function rewriteLegacyURLs($hook, $type, $return, $params) {
-
-		$value = elgg_extract('value', $return);
-
-		if (!$value) {
-			return;
-		}
-
-		$return['value'] = Legacy::update($value);
-		return $return;
-	}
-
 }

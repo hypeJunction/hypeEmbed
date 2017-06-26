@@ -68,6 +68,15 @@ class Menus {
 							'view' => 'embed/tab/assets',
 						),
 			));
+
+			$return[] = ElggMenuItem::factory(array(
+				'name' => 'buttons',
+				'text' => elgg_echo('embed:buttons'),
+				'priority' => 950,
+				'data' => array(
+					'view' => 'embed/tab/buttons',
+				),
+			));
 		}
 
 		return $return;

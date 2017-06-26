@@ -12,6 +12,7 @@ use hypeJunction\Embed\Menus;
 use hypeJunction\Embed\Router;
 use hypeJunction\Embed\Shortcodes;
 use hypeJunction\Embed\Uploads;
+use hypeJunction\Embed\Views;
 
 elgg_register_event_handler('init', 'system', function() {
 
@@ -22,6 +23,7 @@ elgg_register_event_handler('init', 'system', function() {
 	elgg_register_ajax_view('embed/safe/player');
 
 	elgg_register_action('embed/player', __DIR__ . '/actions/embed/player.php');
+	elgg_register_action('embed/buttons', __DIR__ . '/actions/embed/buttons.php', 'admin');
 
 	elgg_register_plugin_hook_handler('view_vars', 'output/plaintext', [Shortcodes::class, 'filterLongtextOutputVars'], 9999);
 	elgg_register_plugin_hook_handler('view_vars', 'output/longtext', [Shortcodes::class, 'filterLongtextOutputVars'], 9999);
@@ -44,6 +46,9 @@ elgg_register_event_handler('init', 'system', function() {
 
 	elgg_extend_view('elgg.css', 'embed/tab/assets.css');
 	elgg_extend_view('admin.css', 'embed/tab/assets.css');
+
+	elgg_register_plugin_hook_handler('layout', 'page', [Views::class, 'filterLightboxLayout']);
+	elgg_register_plugin_hook_handler('shell', 'page', [Views::class, 'filterLightboxShell']);
 	
 });
 

@@ -5,6 +5,7 @@ $english = array(
 	'embed:posts' => 'Posts',
 	'embed:player' => 'Player',
 	'embed:assets' => 'Assets',
+	'embed:buttons' => 'Buttons',
 
 	'embed:assets:help' => 'For improved performance, site administrator can use static asset for recurring embedding. Upload your image files to %s and flush the caches for the files to appear under this tab.',
 	
@@ -33,6 +34,18 @@ $english = array(
 
 	'embed:tab:file:empty' => 'No files have been uploaded yet',
 	'embed:tab:posts:empty' => 'No items have been posted yet',
+
+	'embed:buttons:text' => 'Button text',
+	'embed:buttons:type' => 'Button style',
+	'embed:buttons:type:action' => 'Action',
+	'embed:buttons:type:submit' => 'Submit',
+	'embed:buttons:type:delete' => 'Delete',
+	'embed:buttons:type:cancel' => 'Cancel',
+	'embed:buttons:address' => 'URL',
+	'embed:buttons:target' => 'Target',
+	'embed:buttons:target:self' => 'Same window',
+	'embed:buttons:target:blank' => 'New window',
+	'embed:buttons:target:lightbox' => 'Lightbox',
 );
 
 add_translation("en", $english);

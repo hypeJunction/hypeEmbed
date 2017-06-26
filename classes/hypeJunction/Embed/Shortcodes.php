@@ -13,6 +13,7 @@ class Shortcodes {
 	static $shortcodes = [
 		'embed',
 		'player',
+		'button',
 	];
 
 	/**
@@ -25,7 +26,7 @@ class Shortcodes {
 
 		$shortcodes = implode('|', self::$shortcodes);
 
-		return preg_replace_callback("/\[({$shortcodes})(.*)\]/", function($matches) {
+		return preg_replace_callback("/\[({$shortcodes})(.*?)\]/", function($matches) {
 			$full = $matches[0];
 
 			$shortcode = $matches[1];

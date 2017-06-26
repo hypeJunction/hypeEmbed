@@ -18,24 +18,32 @@ hypeEmbed
 
 ## Shortcodes
 
-The plugin supports `embed` and `player` shorcodes.
+The plugin supports the following shorcodes:
 
-By default, the following attributes are supported in `embed` shortcode:
+`ebmed` shortcode:
 
  * `guid` - GUID of an entity to embed
 
-By default, the following attributes are supported in `player` shortcode:
+`player` shortcode:
 
  * `url` - URL of the player
 
-All other attributes will be parsed and passed to the view after sanitization.
+`button` shortcode:
 
-Example shortcodes:
+ * `text` - call to action
+ * `type` - One of the following types `action`, `submit`, `delete`, `cancel` (these values only affect styling and do not carry any functional value)
+ * `url` - URL to link to
+ * `target` - Default `self`, `blank` or `lightbox` 
+
+Examples:
 
 ```
 [embed guid="555"]
 [player url="http://youtube.com/893dkeie9"]
+[button type="action" text="Read Terms" url="/terms" target="lightbox"]
 ```
+
+Unlisted shortcode attributes will be parsed and passed to the view after sanitization, so extending plugins can add additional options.
 
 By default, only shortcodes passed to `output/longtext` view will be expanded automatically.
 You can manually expand shortcodes using `hypeapps_expand_embed_shortcodes($text)`.

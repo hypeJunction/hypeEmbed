@@ -1,3 +1,17 @@
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/hypeJunction/hypeEmbed/compare/2.1.5...v2.2.0) (2017-06-26)
+
+
+### Bug Fixes
+
+* **previews:** avoid rendering duplicate previews in summary which is part of the full view ([e31b968](https://github.com/hypeJunction/hypeEmbed/commit/e31b968))
+
+### Features
+
+* **buttons:** admins can now embed buttons ([b756d9c](https://github.com/hypeJunction/hypeEmbed/commit/b756d9c))
+
+
+
 <a name="2.1.5"></a>
 ## [2.1.5](https://github.com/hypeJunction/hypeEmbed/compare/2.1.4...v2.1.5) (2017-05-08)
 

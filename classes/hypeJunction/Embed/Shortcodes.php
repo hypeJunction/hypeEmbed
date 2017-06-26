@@ -229,6 +229,12 @@ class Shortcodes {
 			return;
 		}
 
+		if (empty($vars['title'])) {
+			// likely rendering a summary as part of the full view
+			// we don't want duplicate previews
+			return;
+		}
+
 		$entity = elgg_extract('entity', $vars);
 		if (!$entity instanceof ElggObject) {
 			return;

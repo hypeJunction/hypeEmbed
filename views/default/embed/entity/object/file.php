@@ -14,4 +14,7 @@ if (elgg_view_exists("file/specialcontent/$mime")) {
 	echo elgg_view("file/specialcontent/$mime", $vars);
 } else if (elgg_view_exists("file/specialcontent/$base_type/default")) {
 	echo elgg_view("file/specialcontent/$base_type/default", $vars);
+} else {
+	$vars['full_view'] = false;
+	echo elgg_view('object/file', $vars);
 }

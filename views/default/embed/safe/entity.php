@@ -16,7 +16,7 @@ if ($entity instanceof ElggFile && $entity->simpletype == 'image' && $entity->ge
 	$attrs = [
 		'title' => elgg_get_excerpt($entity->getDisplayName()),
 		'url' => $entity->getURL(),
-		'summary' => elgg_get_excerpt($entiy->description),
+		'summary' => elgg_get_excerpt($entity->description),
 		'guid' => $entity->guid,
 	];
 

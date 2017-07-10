@@ -49,6 +49,8 @@ elgg_register_event_handler('init', 'system', function() {
 
 	elgg_register_plugin_hook_handler('layout', 'page', [Views::class, 'filterLightboxLayout']);
 	elgg_register_plugin_hook_handler('shell', 'page', [Views::class, 'filterLightboxShell']);
+
+	elgg_register_plugin_hook_handler('public_pages', 'walled_garden', [Router::class, 'setPublicPages']);
 	
 });
 

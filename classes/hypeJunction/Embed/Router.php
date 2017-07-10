@@ -8,6 +8,7 @@ class Router {
 	 * Handles legacy ckeditor pages
 	 *
 	 * @param array $segments An array of URL segments
+	 *
 	 * @return boolean
 	 */
 	public static function handleCKEditor($segments) {
@@ -48,6 +49,7 @@ class Router {
 	 * @param string $type   "embed"
 	 * @param array  $return Route
 	 * @param array  $params Hook params
+	 *
 	 * @return mixed
 	 */
 	public static function routeEmbed($hook, $type, $return, $params) {
@@ -68,4 +70,20 @@ class Router {
 		}
 	}
 
+	/**
+	 * Set public pages
+	 *
+	 * @param string $hook   "public_pages"
+	 * @param string $type   "walled_garden"
+	 * @param array  $return Public pages
+	 *
+	 * @return array
+	 */
+	public static function setPublicPages($hook, $type, $return) {
+
+		$return[] = 'ckeditor/.*';
+		$return[] = 'embed/.*';
+
+		return $return;
+	}
 }

@@ -1,3 +1,13 @@
+<a name="2.2.1"></a>
+## [2.2.1](https://github.com/hypeJunction/hypeEmbed/compare/2.2.0...v2.2.1) (2017-07-10)
+
+
+### Bug Fixes
+
+* **routes:** allow embed assets to be visible in walled garden ([e2d43d3](https://github.com/hypeJunction/hypeEmbed/commit/e2d43d3))
+
+
+
 <a name="2.2.0"></a>
 # [2.2.0](https://github.com/hypeJunction/hypeEmbed/compare/2.1.5...v2.2.0) (2017-06-26)
 

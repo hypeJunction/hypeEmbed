@@ -1,3 +1,13 @@
+<a name="2.3.0"></a>
+# [2.3.0](https://github.com/hypeJunction/hypeEmbed/compare/2.2.2...v2.3.0) (2017-07-14)
+
+
+### Features
+
+* **embed:** allow admins to embed arbitrary HTML ([5e18b40](https://github.com/hypeJunction/hypeEmbed/commit/5e18b40))
+
+
+
 <a name="2.2.2"></a>
 ## [2.2.2](https://github.com/hypeJunction/hypeEmbed/compare/2.2.1...v2.2.2) (2017-07-10)
 

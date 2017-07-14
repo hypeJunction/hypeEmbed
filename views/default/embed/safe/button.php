@@ -16,4 +16,4 @@ $attrs = [
 
 $output = Shortcodes::getShortcodeTag('button', $attrs);
 
-echo elgg_trigger_plugin_hook('prepare:player', 'embed', $vars, $output);
+echo elgg_trigger_plugin_hook('prepare:button', 'embed', $vars, $output);

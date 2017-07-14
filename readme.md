@@ -7,6 +7,8 @@ hypeEmbed
 * Search, upload and embed files on the spot
 * Search and embed all other registered object types on the spot
 * Embed URL previews and rich-media players
+* [admin] Embed buttons that match the site styles
+* [admin] Embed "insecure" HTML embeds (forms, calendars etc)
 
 ## Acknowledgements
 

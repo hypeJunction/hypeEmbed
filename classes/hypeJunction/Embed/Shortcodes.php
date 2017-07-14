@@ -14,6 +14,7 @@ class Shortcodes {
 		'embed',
 		'player',
 		'button',
+		'code',
 	];
 
 	/**

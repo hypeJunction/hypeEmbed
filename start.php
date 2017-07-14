@@ -24,6 +24,7 @@ elgg_register_event_handler('init', 'system', function() {
 
 	elgg_register_action('embed/player', __DIR__ . '/actions/embed/player.php');
 	elgg_register_action('embed/buttons', __DIR__ . '/actions/embed/buttons.php', 'admin');
+	elgg_register_action('embed/code', __DIR__ . '/actions/embed/code.php', 'admin');
 
 	elgg_register_plugin_hook_handler('view_vars', 'output/plaintext', [Shortcodes::class, 'filterLongtextOutputVars'], 9999);
 	elgg_register_plugin_hook_handler('view_vars', 'output/longtext', [Shortcodes::class, 'filterLongtextOutputVars'], 9999);

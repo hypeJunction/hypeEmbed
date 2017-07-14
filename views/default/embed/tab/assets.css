@@ -10,3 +10,7 @@
     max-width: 100%;
     max-height: 100px;
 }
+
+.ebmed-code-wrapper > * {
+    max-width: 100%;
+}

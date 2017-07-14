@@ -7,6 +7,7 @@ use hypeJunction\Embed\File;
 $subtypes = array(
 	'ckeditor_file' => File::class, // legacy support for files uploaded with ckeditor_addons
 	'embed_file' => File::class,
+	'embed_code' => \hypeJunction\Embed\EmbedCode::class,
 );
 
 foreach ($subtypes as $subtype => $class) {

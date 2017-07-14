@@ -77,6 +77,15 @@ class Menus {
 					'view' => 'embed/tab/buttons',
 				),
 			));
+
+			$return[] = ElggMenuItem::factory(array(
+				'name' => 'code',
+				'text' => elgg_echo('embed:code'),
+				'priority' => 950,
+				'data' => array(
+					'view' => 'embed/tab/code',
+				),
+			));
 		}
 
 		return $return;

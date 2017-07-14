@@ -41,3 +41,18 @@ if (!$upgrade->getUpgradeFromPath($path)) {
 		$upgrade->setCompleted();
 	}
 }
+
+if (!elgg_get_plugin_setting('upgrade:add_embed_code', 'hypeEmbed')) {
+
+	$subtypes = [
+		'embed_code' => \hypeJunction\Embed\EmbedCode::class,
+	];
+
+	foreach ($subtypes as $subtype => $class) {
+		if (!update_subtype('object', $subtype, $class)) {
+			add_subtype('object', $subtype, $class);
+		}
+	}
+
+	elgg_set_plugin_setting('upgrade:add_embed_code', time(), 'hypeEmbed');
+}

@@ -96,8 +96,6 @@ class Menus {
 				$item->setLinkClass("embed-control embed-control-{$id}");
 			}
 
-			$item->addDeps(['elgg/embed', 'embed/toolbar']);
-
 			$url = "embed/tab/{$item->getName()}";
 
 			$page_owner = elgg_get_page_owner_entity();

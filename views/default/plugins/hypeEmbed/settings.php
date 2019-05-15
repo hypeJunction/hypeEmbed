@@ -37,7 +37,7 @@ foreach ($tabs as $tab) {
 		'#type' => 'select',
 		'#label' => elgg_echo('embed:settings:tabs', [elgg_echo("embed:$tab")]),
 		'name' => "params[tabs:$tab]",
-		'value' => $entity->{"tabs:$tab"} || 1,
+		'value' => $entity->{"tabs:$tab"},
 		'options_values' => [
 			0 => elgg_echo('option:no'),
 			1 => elgg_echo('option:yes'),

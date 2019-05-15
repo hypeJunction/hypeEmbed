@@ -1,8 +1,12 @@
 <?php
+/**
+ * @uses $vars['embeds'] Disable embed by setting to false
+ */
 ?>
+
 <div class="embed-toolbar">
 	<?php
-	if (!elgg_extract('embed', $vars)) {
+	if (!elgg_extract('embeds', $vars, true)) {
 		echo elgg_view_menu('embed', [
 			'sort_by' => 'priority',
 			'textarea_id' => elgg_extract('id', $vars),

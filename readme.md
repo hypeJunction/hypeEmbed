@@ -59,3 +59,15 @@ file entities.
 
 Create a folder in your dataroot `/embed/` and place your image files in there, flush the caches,
 and you will see your images in the Assets tab of the embed lightbox window.
+
+
+## Notes
+
+To disabled embeds on a particular field:
+
+```php
+echo elgg_view_field([
+    '#type' => 'longtext',
+    'embeds' => false, // This disables the embeds
+]);
+```

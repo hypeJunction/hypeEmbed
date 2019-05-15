@@ -1,0 +1,145 @@
+.embed-toolbar {
+	border: 1px solid #dcdcdc;
+	margin-top: -2px;
+	border-radius: 0 0 3px 3px;
+	display: flex;
+}
+
+.elgg-menu-embed > li > a {
+	padding: 4px 8px;
+	display: inline-block;
+	color: black;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.elgg-menu-embed {
+	display: flex;
+	flex-direction: row;
+}
+
+.elgg-input-longtext {
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.elgg-menu-embed > li:hover > a, .elgg-menu-embed > li.elgg-state-active > a {
+	background: rgba(0, 0, 0, 0.1);
+}
+
+.elgg-menu-longtext {
+	display: none;
+}
+
+.embed-toolbar .elgg-menu-longtext {
+	display: flex;
+	margin-left: auto;
+	float: none;
+	font-size: inherit;
+}
+
+#embed-toolbar-popup {
+	position: absolute;
+	z-index: 1201;
+	max-width: 800px;
+	width: calc(100vw - 2rem);
+	max-height: 400px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 0;
+}
+
+#embed-toolbar-popup.elgg-ajax-loader {
+	min-height: 10rem;
+}
+
+.embed-wrapper {
+	font-size: 12px;
+}
+
+.embed-wrapper * {
+	font-size: inherit;
+}
+
+.elgg-list.embed-list {
+	border-top: 1px solid #eee !important;
+}
+
+.elgg-list.embed-list > li {
+	border-bottom: 1px solid #eee !important;
+	padding: 0!important;
+}
+
+.elgg-list.embed-list > li:nth-child(even) {
+	background: #fafafa;
+}
+
+.elgg-list.embed-list > li:hover {
+	background: #f4f4f4;
+}
+
+.embed-list-item {
+	padding: 8px;
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+
+.embed-list-item__icon {
+	max-width: 40px;
+	margin-right: 8px;
+}
+
+.embed-list-item__icon img {
+	vertical-align: middle;
+}
+
+.embed-list-item__menu {
+	margin-left: auto;
+}
+
+.embed-list-item__title {
+	font-size: 120%;
+	font-weight: 500;
+}
+
+.embed-list-item__subtitle {
+	color: #aaa;
+}
+
+.embed-type-badge {
+	font-size: 90%;
+	line-height: 1.3;
+	color: #fff;
+	background: #656363;
+	padding: 1px 4px;
+	border-radius: 3px;
+	display: inline-block;
+	margin-right: 8px;
+}
+
+.embed-wrapper .elgg-sortable-list-fieldset {
+	margin: 0 !important;
+	padding: 8px;
+}
+
+.embed-wrapper {
+	width: 100%;
+}
+
+.embed-wrapper label {
+	margin-bottom: 0 !important;
+}
+
+.elgg-module-embed .elgg-head {
+	padding: 8px;
+	border-bottom: 1px solid #dcdcdc;
+}
+
+.elgg-module-embed .elgg-body {
+	padding: 8px;
+}
+
+.embed-wrapper > .elgg-form {
+	padding: 8px;
+}

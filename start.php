@@ -15,8 +15,9 @@ use hypeJunction\Embed\Uploads;
 use hypeJunction\Embed\Views;
 
 elgg_register_event_handler('init', 'system', function() {
+	elgg_unregister_plugin_hook_handler('register', 'menu:longtext', 'embed_longtext_menu');
 
-	elgg_register_plugin_hook_handler('register', 'menu:embed', [Menus::class, 'setupEmbedMenu']);
+	elgg_register_plugin_hook_handler('register', 'menu:embed', [Menus::class, 'setupEmbedMenu'], 800);
 	elgg_register_plugin_hook_handler('filter_options', 'object', [Lists::class, 'addFileSimpletypeOptions']);
 
 	elgg_register_ajax_view('embed/safe/entity');
@@ -38,6 +39,9 @@ elgg_register_event_handler('init', 'system', function() {
 	elgg_register_plugin_hook_handler('entity:icon:file', 'object', [Uploads::class, 'setIconFile']);
 
 	elgg_register_plugin_hook_handler('route', 'embed', [Router::class, 'routeEmbed']);
+
+	elgg_extend_view('input/longtext', 'embed/toolbar');
+	elgg_extend_view('elgg.css', 'embed/toolbar.css');
 
 	// Legacy ckeditor_addons
 	elgg_register_page_handler('ckeditor', [Router::class, 'handleCKEditor']);

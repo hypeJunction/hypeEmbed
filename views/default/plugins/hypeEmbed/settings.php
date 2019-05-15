@@ -23,3 +23,25 @@ echo elgg_view_field([
 		1 => elgg_echo('option:yes'),
 	],
 ]);
+
+$tabs = array_filter([
+	'posts',
+	elgg_is_active_plugin('hypeScraper') ? 'player' : null,
+	'buttons',
+	'code',
+	'assets',
+]);
+
+foreach ($tabs as $tab) {
+	echo elgg_view_field([
+		'#type' => 'select',
+		'#label' => elgg_echo('embed:settings:tabs', [elgg_echo("embed:$tab")]),
+		'name' => "params[tabs:$tab]",
+		'value' => $entity->{"tabs:$tab"} || 1,
+		'options_values' => [
+			0 => elgg_echo('option:no'),
+			1 => elgg_echo('option:yes'),
+		],
+	]);
+}
+

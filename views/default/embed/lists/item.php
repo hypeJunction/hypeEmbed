@@ -21,18 +21,18 @@ if ($entity->hasIcon('small') || $entity instanceof ElggFile) {
 }
 
 $subtitle = elgg_format_element('span', [
-	'class' => 'embed-type-badge elgg-badge mrs',
-		], elgg_echo("item:object:{$entity->getSubtype()}"));
+	'class' => 'embed-type-badge',
+], elgg_echo("item:object:{$entity->getSubtype()}"));
 
 $subtitle .= elgg_view('page/elements/by_line', $vars);
 
 $items[] = [
 	'name' => 'embed',
-	'class' => 'embed-insert-async',
 	'text' => elgg_echo('embed:embed'),
 	'href' => 'javascript:',
 	'data-guid' => $entity->guid,
 	'data-view' => 'embed/safe/entity',
+	'link_class' => 'elgg-button embed-insert-async',
 ];
 
 $menu = elgg_view_menu('embed:entity', [
@@ -40,19 +40,22 @@ $menu = elgg_view_menu('embed:entity', [
 	'entity' => $entity,
 	'sort_by' => 'priority',
 	'class' => 'elgg-menu-hz',
-		]);
-
-echo elgg_view('object/elements/summary', array(
-	'entity' => $entity,
-	'title' => $title,
-	'subtitle' => $subtitle,
-	'content' => elgg_get_excerpt($entity->description) . $menu,
-	'metadata' => false,
-	'tags' => $tags,
-	'icon' => $icon,
-));
+]);
 ?>
-<script>
-	require(['embed/lists/item']);
-</script>
 
+<div class="embed-list-item">
+    <div class="embed-list-item__icon">
+		<?= $icon ?>
+    </div>
+    <div class="embed-list-item__body">
+        <div class="embed-list-item__title">
+			<?= $title ?>
+        </div>
+        <div class="embed-list-item__subtitle">
+			<?= $subtitle ?>
+        </div>
+    </div>
+    <div class="embed-list-item__menu">
+		<?= $menu ?>
+    </div>
+</div>

@@ -2,7 +2,6 @@ define(function (require) {
 
 	var elgg = require('elgg');
 	var embed = require('elgg/embed');
-	var lightbox = require('elgg/lightbox');
 
 	var Ajax = require('elgg/Ajax');
 	var ajax = new Ajax();
@@ -41,11 +40,14 @@ define(function (require) {
 				value: value,
 				event: e
 			}, result);
+
 			if (result || result === '') {
 				textArea.val(result);
 			}
-
-			lightbox.close();
+		}).always(() => {
+			require(['elgg/popup'], function(popup) {
+				popup.close();
+			});
 		});
 
 	});

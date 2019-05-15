@@ -38,6 +38,7 @@ foreach ($types as $type) {
 
 echo elgg_view('lists/objects', [
 	'list_id' => 'embed-file',
+	'list_class' => 'embed-list is-borderless',
 	'options' => $options,
 	'show_filter' => true,
 	'show_sort' => true,

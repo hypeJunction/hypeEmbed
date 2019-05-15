@@ -1,0 +1,40 @@
+<?php
+/**
+ * Layout of embed panel loaded in lightbox
+ */
+
+// So we get a selected a tab
+elgg_view_menu('embed', [
+	'sort_by' => 'priority'
+]);
+
+$selected = elgg_get_config('embed_tab');
+
+if ($selected->getData('view')) {
+	$tab = elgg_view($selected->getData('view'), $vars);
+} else {
+	$tab = elgg_list_entities(
+		embed_get_list_options($selected->getData('options')),
+		'elgg_get_entities',
+		'embed_list_items'
+	);
+
+	if (!$tab) {
+		$tab = elgg_echo('embed:no_section_content');
+	}
+}
+
+$tab .= elgg_view('graphics/ajax_loader', [
+	'class' => 'embed-throbber',
+]);
+
+$container_info = elgg_view('input/hidden', [
+	'name' => 'embed_container_guid',
+	'value' => elgg_get_page_owner_guid(),
+]);
+
+?>
+<div class="embed-wrapper">
+	<?= $tab ?>
+	<?= $container_info ?>
+</div>

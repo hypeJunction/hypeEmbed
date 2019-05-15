@@ -28,6 +28,7 @@ if ($page_owner instanceof ElggGroup) {
 
 echo elgg_view('lists/objects', [
 	'list_id' => 'embed-content-items',
+	'list_class' => 'embed-list is-borderless',
 	'options' => $options,
 	'show_filter' => false,
 	'show_sort' => true,

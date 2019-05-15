@@ -1,3 +1,13 @@
+<a name="3.0.1"></a>
+## [3.0.1](https://github.com/hypeJunction/hypeEmbed/compare/3.0.0...v3.0.1) (2019-05-15)
+
+
+### Bug Fixes
+
+* **vars:** allow disabling embeds on a longtext input ([c91e299](https://github.com/hypeJunction/hypeEmbed/commit/c91e299))
+
+
+
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/hypeJunction/hypeEmbed/compare/2.3.0...v3.0.0) (2019-05-15)
 

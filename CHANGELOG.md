@@ -1,3 +1,17 @@
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/hypeJunction/hypeEmbed/compare/2.3.0...v3.0.0) (2019-05-15)
+
+
+### Bug Fixes
+
+* **ajax:** correctly load scripts for ajax rendered forms ([ffb10fc](https://github.com/hypeJunction/hypeEmbed/commit/ffb10fc))
+
+### Features
+
+* **layout:** implement a different UI for embeds ([dd1855f](https://github.com/hypeJunction/hypeEmbed/commit/dd1855f))
+
+
+
 <a name="2.3.0"></a>
 # [2.3.0](https://github.com/hypeJunction/hypeEmbed/compare/2.2.2...v2.3.0) (2017-07-14)
 

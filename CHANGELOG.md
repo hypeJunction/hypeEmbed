@@ -1,3 +1,13 @@
+<a name="3.0.2"></a>
+## [3.0.2](https://github.com/hypeJunction/hypeEmbed/compare/3.0.1...v3.0.2) (2019-05-23)
+
+
+### Bug Fixes
+
+* **ui:** fix usability issues ([d10e87b](https://github.com/hypeJunction/hypeEmbed/commit/d10e87b))
+
+
+
 <a name="3.0.1"></a>
 ## [3.0.1](https://github.com/hypeJunction/hypeEmbed/compare/3.0.0...v3.0.1) (2019-05-15)
 

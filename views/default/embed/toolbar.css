@@ -38,7 +38,7 @@
 	font-size: inherit;
 }
 
-#embed-toolbar-popup {
+.embed-toolbar-popup {
 	position: absolute;
 	z-index: 1201;
 	max-width: 800px;
@@ -49,7 +49,7 @@
 	padding: 0;
 }
 
-#embed-toolbar-popup.elgg-ajax-loader {
+.embed-toolbar-popup.elgg-ajax-loader {
 	min-height: 10rem;
 }
 

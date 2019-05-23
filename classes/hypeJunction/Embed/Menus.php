@@ -20,7 +20,6 @@ class Menus {
 	 * @return ElggMenuItem[]
 	 */
 	public static function setupEmbedMenu($hook, $type, $return, $params) {
-
 		if (self::isTabEnabled('posts')) {
 			$return[] = ElggMenuItem::factory([
 				'name' => 'posts',

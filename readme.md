@@ -71,3 +71,22 @@ echo elgg_view_field([
     'embeds' => false, // This disables the embeds
 ]);
 ```
+
+If using the form that allows embed in a lightbox, you must open your lightbox with `trapFocus` option disabled, otherwise
+the forms within embed popups won't work.
+
+```js
+require(['elgg/lightbox'], function(lightbox) {
+	lightbox.open({
+	    trapFocus: false,
+	});
+});
+```
+
+```html
+echo elgg_view('output/url', [
+    'url' => 'some-form',
+    'class' => 'elgg-lightbox',
+    'elgg-colorbox-opts' => json_encode(['trapFocus' => false]),
+]);
+```

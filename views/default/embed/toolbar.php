@@ -6,7 +6,7 @@
 
 <div class="embed-toolbar">
 	<?php
-	if (!elgg_extract('embeds', $vars, true)) {
+	if (elgg_extract('embeds', $vars, true)) {
 		echo elgg_view_menu('embed', [
 			'sort_by' => 'priority',
 			'textarea_id' => elgg_extract('id', $vars),
@@ -19,13 +19,8 @@
 		'id' => elgg_extract('id', $vars),
 	]);
 	?>
-</div>
 
-<div class="hidden">
-    <div
-        id="embed-toolbar-popup"
-        class="elgg-module-popup"
-    ></div>
+    <div class="elgg-module-popup embed-toolbar-popup"></div>
 </div>
 
 <script>require(['elgg/embed', 'embed/toolbar'])</script>

@@ -1,3 +1,14 @@
+<a name="3.0.3"></a>
+## [3.0.3](https://github.com/hypeJunction/hypeEmbed/compare/3.0.2...3.0.3) (2019-07-31)
+
+
+### Bug Fixes
+
+* **css:** add toolbar css to admin interface ([7bf9820](https://github.com/hypeJunction/hypeEmbed/commit/7bf9820))
+* **css:** hide visible popup artefact ([42a8afb](https://github.com/hypeJunction/hypeEmbed/commit/42a8afb))
+
+
+
 <a name="3.0.2"></a>
 ## [3.0.2](https://github.com/hypeJunction/hypeEmbed/compare/3.0.1...v3.0.2) (2019-05-23)
 

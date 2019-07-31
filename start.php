@@ -41,7 +41,6 @@ elgg_register_event_handler('init', 'system', function() {
 	elgg_register_plugin_hook_handler('route', 'embed', [Router::class, 'routeEmbed']);
 
 	elgg_extend_view('input/longtext', 'embed/toolbar');
-	elgg_extend_view('elgg.css', 'embed/toolbar.css');
 
 	// Legacy ckeditor_addons
 	elgg_register_page_handler('ckeditor', [Router::class, 'handleCKEditor']);
@@ -51,6 +50,9 @@ elgg_register_event_handler('init', 'system', function() {
 
 	elgg_extend_view('elgg.css', 'embed/tab/assets.css');
 	elgg_extend_view('admin.css', 'embed/tab/assets.css');
+
+	elgg_extend_view('elgg.css', 'embed/toolbar.css');
+	elgg_extend_view('admin.css', 'embed/toolbar.css');
 
 	elgg_register_plugin_hook_handler('layout', 'page', [Views::class, 'filterLightboxLayout']);
 	elgg_register_plugin_hook_handler('shell', 'page', [Views::class, 'filterLightboxShell']);

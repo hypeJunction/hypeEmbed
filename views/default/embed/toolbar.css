@@ -49,6 +49,10 @@
 	padding: 0;
 }
 
+.embed-toolbar-popup:empty {
+	visibility: hidden;
+}
+
 .embed-toolbar-popup.elgg-ajax-loader {
 	min-height: 10rem;
 }
